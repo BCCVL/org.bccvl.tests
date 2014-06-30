@@ -11,7 +11,7 @@ class BasePage():
         self.title = driver.title
 
     def check_text_displayed(self, string):
-        assert string in self.driver.find_element_by_tag_name("body").text
+        return string in self.driver.find_element_by_tag_name("body").text
 
     def wait_till_text_displayed(self, string, seconds):
       try:
