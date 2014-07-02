@@ -363,3 +363,100 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
+
+    def test_gam(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        title = "gam_"+self.generate_timestamp()
+        self.experiments.append(title)
+
+        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_description('Generalized Additive Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Additive Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        # TODO: add assertions for results
+
+    def test_gbm(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        title = "gbm_"+self.generate_timestamp()
+        self.experiments.append(title)
+
+        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_description('Generalized Boosting Modelwith Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Boosting Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        # TODO: add assertions for results
+
+    def test_glm(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        title = "glm_"+self.generate_timestamp()
+        self.experiments.append(title)
+
+        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_description('Generalized Linear Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Linear Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        # TODO: add assertions for results
+
+    # TODO: I don't have maxent.jar working on my local, all yours Stanley!
+    def test_maxent(self):
+        pass
