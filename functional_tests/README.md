@@ -4,7 +4,7 @@ Install Instructions
 From this directory run:
 
 	virtualenv .
-	./bin/pip install distribute --upgrade
+	source bin/activate
 	./bin/pip install -r requirements.txt
 
 Run Tests
@@ -17,4 +17,5 @@ You need to set three environmental variables:
 
 From this directory run:
 
-	./bin/python -m nose
+    source bin/activate
+	./bin/nosetests

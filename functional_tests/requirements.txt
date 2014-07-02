@@ -1,3 +1,2 @@
-selenium
-nose
-coverage
+selenium>=2.42.1
+nose>=1.3.3

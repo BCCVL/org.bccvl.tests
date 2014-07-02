@@ -4,3 +4,5 @@ man
 bin
 lib
 *.pyc
+.idea/
+.Python

@@ -1,4 +1,3 @@
-import os
 from base_page import BasePage
 
 

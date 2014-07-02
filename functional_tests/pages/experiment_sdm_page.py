@@ -1,15 +1,14 @@
 from base_page import BasePage
-from view_experiment_page import ViewExperimentPage
+from experiment_results_page import ExperimentResultsPage
 
 
-class NewSDMExperimentPage(BasePage):
+class ExperimentSDMPage(BasePage):
 
     def select_configuration(self):
         self.driver.find_element_by_link_text("Configuration").click()
 
     def select_description(self):
         self.driver.find_element_by_link_text("Description").click()
-
 
     def select_occurrences(self):
         self.driver.find_element_by_link_text("Occurrences").click()
@@ -26,7 +25,6 @@ class NewSDMExperimentPage(BasePage):
     def select_run(self):
         self.driver.find_element_by_link_text("Run").click()
 
-
     def enter_experiment_name(self, name):
         self.driver.find_element_by_name("form.widgets.IDublinCore.title").clear()
         self.driver.find_element_by_name("form.widgets.IDublinCore.title").send_keys(name)
@@ -34,7 +32,6 @@ class NewSDMExperimentPage(BasePage):
     def enter_experiment_description(self, description):
         self.driver.find_element_by_name("form.widgets.IDublinCore.description").clear()
         self.driver.find_element_by_name("form.widgets.IDublinCore.description").send_keys(description)
-        self.driver.implicitly_wait(100)
 
     def select_sdm_algorithm(self, string):
         path_string = "(//input[@data-friendlyname='checkbox_algorithm_" + string + "'])"
@@ -58,14 +55,13 @@ class NewSDMExperimentPage(BasePage):
 
     def select_review_start_experiment(self):
         self.driver.find_element_by_name("form.buttons.save").click()
-        view_experiment_page = ViewExperimentPage(self.driver)
+        view_experiment_page = ExperimentResultsPage(self.driver)
         return view_experiment_page
 
     def check_review_start_experiment(self):
         self.driver.find_element_by_name("form.buttons.save")
 
     def select_submit_invalid_experiment(self):
-        # self.driver.find_element_by_xpath("(//button[@name='form.buttons.save'])[2]").click()
         self.driver.find_element_by_name("form.buttons.save").click()
 
     def enter_ala_search_string(self,string):
@@ -107,10 +103,6 @@ class NewSDMExperimentPage(BasePage):
         self.driver.find_element_by_name("form.widgets.parameters_brt.widgets.n_folds").clear()
         self.driver.find_element_by_name("form.widgets.parameters_brt.widgets.n_folds").send_keys(value)
 
-    def enter_brt_config_prev_stratify(self, boolean):
-        if (not boolean):
-            self.driver.find_element_by_name("form.widgets.parameters_brt.widgets.prev_stratify:list").click()
-
     def enter_brt_config_family(self, name):
         self.driver.find_element_by_xpath("//select[@name='form.widgets.parameters_brt.widgets.family:list']/option[text()='" + name + "']").click()
 
@@ -128,4 +120,3 @@ class NewSDMExperimentPage(BasePage):
     def enter_brt_config_tolerance_value(self, value):
         self.driver.find_element_by_name("form.widgets.parameters_brt.widgets.tolerance_value").clear()
         self.driver.find_element_by_name("form.widgets.parameters_brt.widgets.tolerance_value").send_keys(value)
-
