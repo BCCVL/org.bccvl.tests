@@ -8,11 +8,11 @@ class TestSDMExperiment(BCCVLTestCase):
 	def test_ann(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "ann_"+str(time.time())
+		title = "ann_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -34,23 +34,24 @@ class TestSDMExperiment(BCCVLTestCase):
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
 		# Check results
-		self.assertTrue(experiment_view.check_text_displayed('mean_response_curves.png'))
-		self.assertTrue(experiment_view.check_text_displayed('pROC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('ann.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('model.object.RData.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_ClampingMask.tif'))
+		self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+		self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+		self.assertTrue(experiment_view.has_result_file('pROC.png'))
+		self.assertTrue(experiment_view.has_result_file('ann.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
 
 	def test_bioclim(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "bioclim_"+str(time.time())
+		title = "bioclim_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -71,27 +72,27 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('dismo.eval.object.RData'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_14_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_15_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html'))
-		self.assertTrue(experiment_view.check_text_displayed('AUC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('maxent_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+		self.assertTrue(experiment_view.has_result_file('results.html'))
+		self.assertTrue(experiment_view.has_result_file('AUC.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 	def test_brt(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "brt_"+str(time.time())
+		title = "brt_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -113,27 +114,27 @@ class TestSDMExperiment(BCCVLTestCase):
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 		
 		# Check results
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('dismo.eval.object.RData'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html'))
-		self.assertTrue(experiment_view.check_text_displayed('AUC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_14_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_15_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('brt.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('maxent_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+		self.assertTrue(experiment_view.has_result_file('results.html'))
+		self.assertTrue(experiment_view.has_result_file('AUC.png'))
+		self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+		self.assertTrue(experiment_view.has_result_file('brt.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 	def test_circles(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "circles_"+str(time.time())
+		title = "circles_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -154,30 +155,31 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('dismo.eval.object.RData'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_14_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_15_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('lat_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('lon_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html'))
-		self.assertTrue(experiment_view.check_text_displayed('AUC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('circles.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('maxent_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_Unknown.tif'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+		self.assertTrue(experiment_view.has_result_file('lat_response.png'))
+		self.assertTrue(experiment_view.has_result_file('lon_response.png'))
+		self.assertTrue(experiment_view.has_result_file('results.html'))
+		self.assertTrue(experiment_view.has_result_file('AUC.png'))
+		self.assertTrue(experiment_view.has_result_file('circles.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_Unknown.tif'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 	def test_classification_tree(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "ct_"+str(time.time())
+		title = "ct_"+generate_timestamp()
+
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -198,25 +200,25 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('mean_response_curves.png'))
-		self.assertTrue(experiment_view.check_text_displayed('pROC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('cta.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('model.object.RData.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_Unknown.tif'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_ClampingMask.tif'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+		self.assertTrue(experiment_view.has_result_file('pROC.png'))
+		self.assertTrue(experiment_view.has_result_file('cta.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_Unknown.tif'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 	def test_convex_hull(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "convhull_"+str(time.time())
+		title = "convhull_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -237,31 +239,31 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('dismo.eval.object.RData'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_14_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_15_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('lat_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('lon_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html'))
-		self.assertTrue(experiment_view.check_text_displayed('AUC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('convhull.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('maxent_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_Unknown.tif'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+		self.assertTrue(experiment_view.has_result_file('lat_response.png'))
+		self.assertTrue(experiment_view.has_result_file('lon_response.png'))
+		self.assertTrue(experiment_view.has_result_file('results.html'))
+		self.assertTrue(experiment_view.has_result_file('AUC.png'))
+		self.assertTrue(experiment_view.has_result_file('convhull.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_Unknown.tif'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 
 	def test_domain(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "domain_"+str(time.time())
+		title = "domain_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -282,28 +284,28 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
-		self.assertTrue(experiment_view.check_text_displayed('dismo.eval.object.RData'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_14_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('bioclim_15_response.png'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html'))
-		self.assertTrue(experiment_view.check_text_displayed('AUC.png'))
-		self.assertTrue(experiment_view.check_text_displayed('domain.Rout'))
-		self.assertTrue(experiment_view.check_text_displayed('combined.modelEvaluation.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('biomod2_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('maxent_like_VariableImportance.csv'))
-		self.assertTrue(experiment_view.check_text_displayed('results.html.zip'))
-		self.assertTrue(experiment_view.check_text_displayed('proj_current_Unknown.tif'))
-		self.assertTrue(experiment_view.check_text_displayed('pstats.json'))
+		self.assertTrue(experiment_view.has_result_file(title))
+		self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
+		self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+		self.assertTrue(experiment_view.has_result_file('results.html'))
+		self.assertTrue(experiment_view.has_result_file('AUC.png'))
+		self.assertTrue(experiment_view.has_result_file('domain.Rout'))
+		self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+		self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+		self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+		self.assertTrue(experiment_view.has_result_file('proj_current_Unknown.tif'))
+		self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
 	def test_fda(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "fda_"+str(time.time())
+		title = "fda_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -324,17 +326,17 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
+		self.assertTrue(experiment_view.has_result_file(title))
 		# TODO: add assertions for results
 
 	def test_gam(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "gam_"+str(time.time())
+		title = "gam_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -355,17 +357,17 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
+		self.assertTrue(experiment_view.has_result_file(title))
 		# TODO: add assertions for results
 
 	def test_gbm(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "gbm_"+str(time.time())
+		title = "gbm_"+self.generate_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -386,17 +388,17 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
+		self.assertTrue(experiment_view.has_result_file(title))
 		# TODO: add assertions for results
 
 	def test_glm(self):
 		homepage = Homepage(self.driver)
 		login_page = homepage.click_login()
-		homepage = login_page.valid_login('admin', 'admin')
+		homepage = login_page.valid_login(self.username, self.password)
 		experiment_page = homepage.click_experiments()
 		new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-		title = "glm_"+str(time.time())
+		title = "glm_"+self.get_timestamp()
 		self.experiments.append(title)
 
 		new_sdm_page.enter_experiment_name(title)
@@ -417,7 +419,7 @@ class TestSDMExperiment(BCCVLTestCase):
 		# Wait until completion
 		experiment_view.wait_till_text_displayed('This experiment is complete. The results are available below', 500)
 
-		self.assertTrue(experiment_view.check_text_displayed(title))
+		self.assertTrue(experiment_view.has_result_file(title))
 		# TODO: add assertions for results
 
 	# TODO: I don't have maxent.jar working on my local, all yours Stanley!
