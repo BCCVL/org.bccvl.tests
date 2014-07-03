@@ -18,7 +18,7 @@ virtualenv .
 ./bin/pip install -r requirements.txt
 
 # Run tests
-./bin/nosetests --with-xunit
+./bin/nosetests -v --with-xunit
 
 # Return the exit status of the tests. Causes the Jenkins build to pass/fail accordingly
 exit $?

@@ -26,6 +26,8 @@ class BCCVLTestCase(unittest.TestCase):
         if virtual_display:
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
+        else:
+            self.display = None
 
         # Setup the Firefox Profile and webdriver
         self.driver = webdriver.Firefox()
@@ -40,7 +42,8 @@ class BCCVLTestCase(unittest.TestCase):
         # if experiments were created during this test then delete them
         for experiment in self.experiments:
             self.delete_experiment(experiment)
-            self.experiments.remove(experiment)
+        if self.display:
+            self.display.stop()
         self.driver.quit()
 
     def delete_dataset(self, title):
