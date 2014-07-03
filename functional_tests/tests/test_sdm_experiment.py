@@ -1,5 +1,6 @@
 from experiment_test_base import ExperimentTestCase
 from pages.homepage import Homepage
+from test_utils import generate_timestamp
 
 
 # Test cases for SDM experiments - testing all algorithms
@@ -12,10 +13,10 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "ann_" + self.generate_timestamp()
+        experiment_name = "ann_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
-        new_sdm_page.enter_experiment_description('Artificial Nueral Network with Koala occurrences')
+        new_sdm_page.enter_experiment_description('Artificial Neural Network with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
         new_sdm_page.select_occurrences()
@@ -24,8 +25,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -56,7 +59,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "bioclim_" + self.generate_timestamp()
+        experiment_name = "bioclim_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Bioclim with Koala occurrences')
@@ -68,8 +71,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -103,7 +108,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "brt_"+self.generate_timestamp()
+        experiment_name = "brt_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Boosted Regression Experiment with Koala occurrences')
@@ -115,8 +120,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -151,7 +158,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "circles_"+self.generate_timestamp()
+        experiment_name = "circles_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Circles Experiment with Koala occurrences')
@@ -163,8 +170,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -200,7 +209,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "ct_"+self.generate_timestamp()
+        experiment_name = "ct_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Classification Tree Experiment with Koala occurrences')
@@ -212,8 +221,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -243,7 +254,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "convhull_"+self.generate_timestamp()
+        experiment_name = "convhull_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Convex Hull Experiment with Koala occurrences')
@@ -255,8 +266,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -292,7 +305,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "domain_"+self.generate_timestamp()
+        experiment_name = "domain_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Domain experiments with Koala occurrences')
@@ -304,8 +317,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -339,7 +354,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        experiment_name = "fda_"+self.generate_timestamp()
+        experiment_name = "fda_" + generate_timestamp()
 
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Flexible Descriminant Analysis with Koala occurrences')
@@ -351,8 +366,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)', 'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 

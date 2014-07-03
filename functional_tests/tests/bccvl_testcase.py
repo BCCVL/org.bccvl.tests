@@ -29,8 +29,10 @@ class BCCVLTestCase(unittest.TestCase):
         # Setup the Firefox Profile and webdriver
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(implicit_wait)
+
         # Maximize the window
         self.driver.maximize_window()
+
         # Go to the bccvl homepage
         self.driver.get(self.url)
 

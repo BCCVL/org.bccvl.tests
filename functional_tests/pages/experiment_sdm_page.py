@@ -50,7 +50,8 @@ class SDMExperimentPage(BasePage):
         self.driver.find_element_by_xpath(path_string).click()
 
     def select_environmental_datasets(self, dataset, checkbox):
-        path_string = "(//tr[@data-friendlyname='collapsable_climatelayer_" + dataset + "']/..//input[@data-friendlyname='checkbox_climatelayer_" + checkbox + "'])"
+        path_string = "(//tr[@data-friendlyname='collapsable_climatelayer_" + dataset +\
+                      "']/..//input[@data-friendlyname='checkbox_climatelayer_" + checkbox + "'])"
         self.driver.find_element_by_xpath(path_string).click()
 
     def select_review_start_experiment(self):
