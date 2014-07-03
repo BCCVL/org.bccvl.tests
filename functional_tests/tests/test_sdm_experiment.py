@@ -365,10 +365,11 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -378,19 +379,15 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
-        self.assertTrue(experiment_view.has_result_file('AUC.png'))
-        self.assertTrue(experiment_view.has_result_file('results.html'))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
-        self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
-        self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
-        self.assertTrue(experiment_view.has_result_file('domain.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
-        self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+        self.assertTrue(experiment_view.has_result_file('fda.Rout'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
         # Cleanup
