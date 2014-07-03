@@ -25,9 +25,6 @@ class ExperimentTestCase(BCCVLTestCase):
         select.select_by_value(experiment_name)
         self.driver.find_element_by_name("manage_delObjects:method").click()
 
-    def generate_timestamp(self):
-        return str(int(time.time()))
-
     # Note: This method will block if the element was not immediately visible.
     # The amount of time that this will block depends on the call to self.driver.implicitly_wait in this class'
     # setUp(self)
