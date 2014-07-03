@@ -1,12 +1,13 @@
 import unittest
+import os
+import time
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoSuchElementException
-import os
-import time
 
 
-# Initial test cases to ensure that the BCCVL application is up and running.
+# Base Test Cases used to test BCCVL
 class BCCVLTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -17,6 +18,14 @@ class BCCVLTestCase(unittest.TestCase):
 
         # The amount of time selenium will potentially wait in searching for elements. This is blocking.
         implicit_wait = int(os.getenv('BCCVL_TEST_IMPLICIT_WAIT', '5'))
+
+        # Run tests in a virtual display (xvfb)
+        virtual_display = os.getenv('BCCVL_TEST_VIRTUAL_DISPLAY', 'false') == 'true'
+
+        # Setup the virtual display
+        if virtual_display:
+            self.display = Display(visible=0, size=(1920, 1080))
+            self.display.start()
 
         # Setup the Firefox Profile and webdriver
         self.driver = webdriver.Firefox()

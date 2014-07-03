@@ -10,10 +10,8 @@
 #   BCCVL_TEST_IMPLICIT_WAIT (optional) - The number of seconds to wait while selenium is looking for web elements
 ###
 
-
 # Setup virtual env
 virtualenv .
-source ./bin/activate
 
 # Install dependencies
 ./bin/pip install -r requirements.txt
