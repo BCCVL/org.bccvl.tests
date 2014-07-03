@@ -1,6 +1,6 @@
 import os
 from base_page import BasePage
-from experiment_sdm_page import ExperimentSDMPage
+from experiment_sdm_page import SDMExperimentPage
 from experiment_results_page import ExperimentResultsPage
 
 
@@ -8,7 +8,7 @@ class ExperimentListPage(BasePage):
 
     def click_new_sdm_experiment(self):
         self.driver.find_element_by_link_text("new SDM Experiment").click()
-        new_sdm_experiment_page = ExperimentSDMPage(self.driver)
+        new_sdm_experiment_page = SDMExperimentPage(self.driver)
         return new_sdm_experiment_page
 
     def click_existing_experiment(self, path):

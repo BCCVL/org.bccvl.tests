@@ -2,7 +2,7 @@ from base_page import BasePage
 from experiment_results_page import ExperimentResultsPage
 
 
-class ExperimentSDMPage(BasePage):
+class SDMExperimentPage(BasePage):
 
     def select_configuration(self):
         self.driver.find_element_by_link_text("Configuration").click()

@@ -1,9 +1,9 @@
-from bccvl_testcase import BCCVLTestCase
+from experiment_test_base import ExperimentTestCase
 from pages.homepage import Homepage
 
 
 # Test cases for SDM experiments - testing all algorithms
-class TestSDMExperiment(BCCVLTestCase):
+class TestSDMExperiment(ExperimentTestCase):
 
     def test_ann(self):
         homepage = Homepage(self.driver)
@@ -12,10 +12,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "ann_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "ann_" + self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Artificial Nueral Network with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
@@ -35,7 +34,7 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
         self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
@@ -47,6 +46,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_bioclim(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -54,10 +56,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "bioclim_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "bioclim_" + self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Bioclim with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Bioclim')
@@ -76,7 +77,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(13, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -92,6 +93,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_brt(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -99,10 +103,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "brt_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "brt_"+self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Boosted Regression Experiment with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Boosted Regression Tree')
@@ -122,7 +125,7 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(13, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -138,6 +141,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_circles(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -145,10 +151,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "circles_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "circles_"+self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Circles Experiment with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Circles')
@@ -167,7 +172,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(15, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -185,6 +190,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_classification_tree(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -192,11 +200,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "ct_"+self.generate_timestamp()
+        experiment_name = "ct_"+self.generate_timestamp()
 
-        self.experiments.append(title)
-
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Classification Tree Experiment with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Classification Tree')
@@ -215,7 +221,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
         self.assertTrue(experiment_view.has_result_file('pROC.png'))
@@ -227,6 +233,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_convex_hull(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -234,10 +243,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "convhull_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "convhull_"+self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Convex Hull Experiment with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Convex Hull')
@@ -256,7 +264,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(15, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -274,6 +282,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_domain(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -281,10 +292,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "domain_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "domain_"+self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Domain experiments with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Domain')
@@ -303,7 +313,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(13, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -319,6 +329,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_fda(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -326,10 +339,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "fda_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "fda_"+self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Flexible Descriminant Analysis with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Flexible Discriminant Analysis')
@@ -348,7 +360,7 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_view.wait_for_experiment_to_complete(500)
         self.assertTrue(experiment_view.has_completed_successfully())
 
-        self.assertTrue(experiment_view.has_results_header(title))
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(13, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
@@ -364,6 +376,9 @@ class TestSDMExperiment(BCCVLTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
     def test_gam(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
@@ -371,10 +386,10 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "gam_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "gam_" + self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Generalized Additive Model with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Generalized Additive Model')
@@ -402,10 +417,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "gbm_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "gbm_" + self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Generalized Boosting Modelwith Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Generalized Boosting Model')
@@ -433,10 +447,9 @@ class TestSDMExperiment(BCCVLTestCase):
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
 
-        title = "glm_"+self.generate_timestamp()
-        self.experiments.append(title)
+        experiment_name = "glm_" + self.generate_timestamp()
 
-        new_sdm_page.enter_experiment_name(title)
+        new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Generalized Linear Model with Koala occurrences')
         new_sdm_page.select_configuration()
         new_sdm_page.select_sdm_algorithm('Generalized Linear Model')
