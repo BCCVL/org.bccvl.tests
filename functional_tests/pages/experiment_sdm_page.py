@@ -37,20 +37,22 @@ class SDMExperimentPage(BasePage):
         path_string = "(//input[@data-friendlyname='checkbox_algorithm_" + string + "'])"
         self.driver.find_element_by_xpath(path_string).click()
 
-    def select_occurrences_dataset(self, string):
-        path_string = "(//input[@data-friendlyname='radio_occurrence_" + string + "'])"
-        self.driver.find_element_by_xpath(path_string).click()
+    def select_occurrences_dataset(self, dataset_name):
+        path_string = 'table.bccvl-occurrencestable input[data-friendlyname="radio_' + dataset_name + '"]'
+        self.driver.find_element_by_css_selector(path_string).click()
 
-    def select_absences_dataset(self, string):
-        path_string = "(//input[@data-friendlyname='radio_absence_" + string + "'])"
-        self.driver.find_element_by_xpath(path_string).click()
+    def select_absences_dataset(self, dataset_name):
+        path_string = 'table.bccvl-absencestable input[data-friendlyname="radio_' + dataset_name + '"]'
+        self.driver.find_element_by_css_selector(path_string).click()
 
     def select_current_climate_layers(self, string):
-        path_string = "(//tr[@data-friendlyname='collapsable_climatelayer_" + string + "'])"
+        # Yes, there is a type here, but that's how it is on the backend
+        path_string = "(//tr[@data-friendlyname='collapbsable_climatelayer_" + string + "'])"
         self.driver.find_element_by_xpath(path_string).click()
 
     def select_environmental_datasets(self, dataset, checkbox):
-        path_string = "(//tr[@data-friendlyname='collapsable_climatelayer_" + dataset + \
+        # Yes, there is a type here, but that's how it is on the backend
+        path_string = "(//tr[@data-friendlyname='collapbsable_climatelayer_" + dataset + \
                       "']/..//input[@data-friendlyname='checkbox_climatelayer_" + checkbox + "'])"
         self.driver.find_element_by_xpath(path_string).click()
 
