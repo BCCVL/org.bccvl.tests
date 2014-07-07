@@ -863,3 +863,278 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Cleanup
         self.delete_experiment(experiment_name)
+
+    def test_gbm_1km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "gbm_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Generalized Boosting Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Boosting Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('gbm.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_gbm_5km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "gbm_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Generalized Boosting Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Boosting Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('gbm.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_glm_1km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "glm_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Generalized Linear Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Linear Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+
+        # GLM with 1km climate layer currently fails
+        self.assertTrue(experiment_view.has_completed_with_failure())
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_glm_5km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "glm_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Generalized Linear Model with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Generalized Linear Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('glm.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_maxent_1km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "maxent_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Maximum Entropy Modeling with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Maximum Entropy Modeling')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(11, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_maxent_5km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "maxent_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Maximum Entropy Modeling with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Maximum Entropy Modeling')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        # Note: FDA Only works with 5km climate layer datasets
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete(500)
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(11, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
