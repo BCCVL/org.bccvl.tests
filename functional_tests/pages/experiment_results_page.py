@@ -22,6 +22,9 @@ class ExperimentResultsPage(BasePage):
     def has_completed_successfully(self):
         return self.experiment_status_completed == self._get_experiment_status()
 
+    def has_completed_with_failure(self):
+        return self.experiment_status_failed == self._get_experiment_status()
+
     def wait_for_experiment_to_complete(self, seconds):
         WebDriverWait(self.driver, seconds).until(lambda s: self._is_experiment_complete())
 
