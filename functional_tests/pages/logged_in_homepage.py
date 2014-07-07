@@ -1,6 +1,6 @@
 from homepage import Homepage
 from experiment_list_page import ExperimentListPage
-from datasets_page import DatasetsPage
+from datasets_list_page import DatasetsListPage
 
 
 class LoggedInHomepage(Homepage):
@@ -12,7 +12,7 @@ class LoggedInHomepage(Homepage):
 
     def click_datasets(self):
         self.driver.find_element_by_link_text("Datasets").click()
-        datasets_page = DatasetsPage(self.driver)
+        datasets_page = DatasetsListPage(self.driver)
         return datasets_page
 
     def click_logout(self):
