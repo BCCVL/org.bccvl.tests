@@ -36,7 +36,7 @@ class TestProjectionExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Click on Experiments
@@ -64,7 +64,7 @@ class TestProjectionExperiment(ExperimentTestCase):
         experiment_result_page = new_projection_page.select_run_experiment()
 
         # Wait until completion
-        experiment_result_page.wait_for_experiment_to_complete(500)
+        experiment_result_page.wait_for_experiment_to_complete()
         self.assertTrue(experiment_result_page.has_completed_successfully())
 
         # Check results

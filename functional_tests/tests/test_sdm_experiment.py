@@ -33,7 +33,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
@@ -79,7 +79,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
@@ -125,7 +125,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -174,7 +174,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -223,7 +223,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
@@ -273,7 +273,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         # Check results
@@ -323,7 +323,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -374,7 +374,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -425,7 +425,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -470,7 +470,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -515,7 +515,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -566,7 +566,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -617,7 +617,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -666,7 +666,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -716,7 +716,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
 
         # FDA fails with 1km climate layer
         self.assertTrue(experiment_view.has_completed_with_failure())
@@ -752,7 +752,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -798,7 +798,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -845,7 +845,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -892,7 +892,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -939,7 +939,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -986,7 +986,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
 
         # GLM with 1km climate layer currently fails
         self.assertTrue(experiment_view.has_completed_with_failure())
@@ -1022,7 +1022,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -1069,7 +1069,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
@@ -1118,7 +1118,7 @@ class TestSDMExperiment(ExperimentTestCase):
         experiment_view = new_sdm_page.select_review_start_experiment()
 
         # Wait until completion
-        experiment_view.wait_for_experiment_to_complete(500)
+        experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))

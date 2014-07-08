@@ -4,6 +4,9 @@ from base_page import BasePage
 
 class ExperimentResultsPage(BasePage):
 
+    # The amount of time to wait for experiments to complete. 10mins
+    experiment_complete_timeout = 60 * 10
+
     results_table_id = 'bccvl-experimentresults-table'
     experiment_status_completed = 'COMPLETED'
     experiment_status_failed = 'FAILED'
@@ -25,8 +28,8 @@ class ExperimentResultsPage(BasePage):
     def has_completed_with_failure(self):
         return self.experiment_status_failed == self._get_experiment_status()
 
-    def wait_for_experiment_to_complete(self, seconds):
-        WebDriverWait(self.driver, seconds).until(lambda s: self._is_experiment_complete())
+    def wait_for_experiment_to_complete(self):
+        WebDriverWait(self.driver, self.experiment_complete_timeout).until(lambda s: self._is_experiment_complete())
 
     def _get_output_file_names(self):
         return self.driver.find_elements_by_xpath("//table[@id='" + self.results_table_id + "']/tbody/tr/td/h1")
