@@ -4,8 +4,9 @@ from base_page import BasePage
 
 class ExperimentResultsPage(BasePage):
 
-    # The amount of time to wait for experiments to complete. 10mins
-    experiment_complete_timeout = 60 * 10
+    # The maximum amount of time to wait for experiments to complete. 15mins
+    # Once this time has elapsed, the tests will fail.
+    experiment_complete_timeout = 60 * 15
 
     results_table_id = 'bccvl-experimentresults-table'
     experiment_status_completed = 'COMPLETED'
