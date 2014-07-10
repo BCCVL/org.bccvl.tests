@@ -27,8 +27,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -73,8 +71,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -119,8 +115,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -168,8 +162,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -217,8 +209,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -267,8 +257,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -317,8 +305,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -368,8 +354,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -419,8 +403,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -464,8 +446,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -509,8 +489,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -560,8 +538,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -611,8 +587,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -660,8 +634,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -710,8 +682,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -746,8 +716,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -792,8 +760,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -839,8 +805,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -886,8 +850,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -933,8 +895,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -980,8 +940,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -1016,8 +974,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -1063,8 +1019,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -1112,8 +1066,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
-                                                   'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
