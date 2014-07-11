@@ -37,8 +37,7 @@ class TestSDMExperiment(ExperimentTestCase):
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', "ann"))
         self.assertTrue(experiment_view.has_result_file('pROC.png'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout'))
         self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
@@ -123,7 +122,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -132,7 +131,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('bioclim.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -170,7 +168,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -179,7 +177,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('bioclim.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -218,7 +215,7 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -227,7 +224,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('brt.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -266,7 +262,7 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -275,7 +271,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('brt.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -313,7 +308,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(15, experiment_view.get_num_output_files())
+        self.assertEqual(14, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -325,7 +320,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -362,7 +356,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(15, experiment_view.get_num_output_files())
+        self.assertEqual(14, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -374,7 +368,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -497,7 +490,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(15, experiment_view.get_num_output_files())
+        self.assertEqual(14, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -507,7 +500,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('convhull.Rout'))
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
@@ -546,7 +538,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(15, experiment_view.get_num_output_files())
+        self.assertEqual(14, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -556,7 +548,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('convhull.Rout'))
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
@@ -595,7 +586,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -604,7 +595,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('domain.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -642,7 +632,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_successfully())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(13, experiment_view.get_num_output_files())
+        self.assertEqual(12, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
         self.assertTrue(experiment_view.has_result_file('AUC.png'))
         self.assertTrue(experiment_view.has_result_file('results.html'))
@@ -651,7 +641,6 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('domain.Rout'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
         self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -1087,6 +1076,69 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    # This test tests ANN SDM with three 5KM environmental datasets as well as
+    # Bioclim experiment in one single experiment
+    def test_ann_bioclim_5km_double(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "ann_and_bioclim_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('ANN + Bioclim')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
+        new_sdm_page.select_sdm_algorithm('Bioclim')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B01 - Annual Mean Temperature')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(22, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('ann.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv',"ann"))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json',"ann"))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif',"ann"))
+        self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+        self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_01_response.png'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_02_response.png'))
+        self.assertTrue(experiment_view.has_result_file('results.html'))
+        self.assertTrue(experiment_view.has_result_file('AUC.png'))
+        self.assertTrue(experiment_view.has_result_file('bioclim.Rout'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv','bioclim'))
+        self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+        self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+        self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif',"bioclim"))
+        self.assertTrue(experiment_view.has_result_file('pstats.json',"bioclim"))
 
         # Cleanup
         self.delete_experiment(experiment_name)
