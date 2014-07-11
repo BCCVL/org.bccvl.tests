@@ -2,7 +2,9 @@ import os
 from base_page import BasePage
 from experiment_sdm_page import SDMExperimentPage
 from experiment_projection_page import ProjectionExperimentPage
+from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
+
 
 
 class ExperimentListPage(BasePage):
@@ -21,3 +23,8 @@ class ExperimentListPage(BasePage):
         self.driver.find_element_by_link_text("new Projection Experiment").click()
         new_projection_experiment = ProjectionExperimentPage(self.driver)
         return new_projection_experiment
+
+    def click_new_biodiverse_experiment(self):
+        self.driver.find_element_by_link_text("new Biodiverse Experiment").click()
+        new_biodiverse_experiment = BiodiverseExperimentPage(self.driver)
+        return new_biodiverse_experiment
