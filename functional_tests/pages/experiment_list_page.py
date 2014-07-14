@@ -6,7 +6,6 @@ from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
 
 
-
 class ExperimentListPage(BasePage):
 
     def click_new_sdm_experiment(self):
@@ -28,3 +27,63 @@ class ExperimentListPage(BasePage):
         self.driver.find_element_by_link_text("new Biodiverse Experiment").click()
         new_biodiverse_experiment = BiodiverseExperimentPage(self.driver)
         return new_biodiverse_experiment
+
+    def click_share_experiment(self, experiment_name):
+        buttons = self.driver.find_elements_by_css_selector("table.bccvl-experimenttable tbody tr td.bccvl-table-controls a.sharing-btn")
+
+        # Returns a list of TRs.
+        # they are in duples like:
+        # - title
+        # - type
+        # There is no easy way to differentiate them
+        tds = self.driver.find_elements_by_css_selector("table.bccvl-experimenttable tbody tr td.bccvl-table-label")
+
+        # Extract all the titles. (i.e. every 2nd one)
+        names = []
+        index = 0
+        for td in tds:
+            index = index % 2
+            if index == 0:
+                # put them into names
+                # get the h1 which is the actual text of the name
+                names.append(td.find_element_by_css_selector("h1"))
+            index = index + 1
+
+        # there should be a share button for every experiment
+        assert len(buttons) == len(names)
+
+        # Now go through the list of name webelements to find the index of the one
+        # that has the same name as what we're looking for
+        # and click on it that element.
+        index = 0
+        for name in names:
+            if experiment_name in name.text:
+                buttons[index].click()
+                return
+            else:
+                index = index + 1
+
+        # Shouldn't reach this point unless nothing was clicked
+        assert False is True
+        return
+
+    # After selecting share you can search for users
+    def enter_user_search(self, name):
+        self.driver.find_element_by_id('sharing-user-group-search').clear()
+        self.driver.find_element_by_id('sharing-user-group-search').send_keys(name)
+
+    # On the share page you can tick "can view" for certain people
+    # TODO: This is quite difficult at the moment because depending on who you are the page looks difference
+    # i.e. admins see add edit review and review, where as other users only see view.
+    def check_can_view(self, name):
+        pass
+
+    def select_share_save(self):
+        self.driver.find_element_by_id('sharing-save-button').click()
+
+    def select_share_cancel(self):
+        self.driver.find_element_by_css_selector('input.btn-danger').click()
+
+    def agree_to_terms_and_conditions(self):
+        self.driver.find_element_by_id("legal-checkbox").click()
+
