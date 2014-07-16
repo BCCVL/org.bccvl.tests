@@ -6,6 +6,9 @@ class DatasetsListPage(DatasetsTabPage):
     def click_preview_dataset(self):
         pass
 
+    def click_share_dataset(self, name):
+        pass
+
     # This method, given a name, returns a list of
     # DatasetObjects which name contains the parameter 'name'
     def get_dataset_list(self):

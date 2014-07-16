@@ -318,7 +318,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('circles.Rout'))
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -366,7 +366,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
         self.assertTrue(experiment_view.has_result_file('circles.Rout'))
         self.assertTrue(experiment_view.has_result_file('lon_response.png'))
-        self.assertTrue(experiment_view.has_result_file('bioclim_15_response.png'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_14_response.png'))
         self.assertTrue(experiment_view.has_result_file('lat_response.png'))
         self.assertTrue(experiment_view.has_result_file('results.html.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -1142,3 +1142,217 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Cleanup
         self.delete_experiment(experiment_name)
+
+    # Test MaxEnt and Domain algorithms together.
+    def test_maxent_domain_5km_double(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "maxent_and_domain_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('maxent_and_domain')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Maximum Entropy Modeling')
+        new_sdm_page.select_sdm_algorithm('Domain')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B01 - Annual Mean Temperature')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(23, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData'))
+        self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_01_response.png'))
+        self.assertTrue(experiment_view.has_result_file('results.html'))
+        self.assertTrue(experiment_view.has_result_file('AUC.png'))
+        self.assertTrue(experiment_view.has_result_file('domain.Rout'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'domain'))
+        self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv'))
+        self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv'))
+        self.assertTrue(experiment_view.has_result_file('results.html.zip'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'domain'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'domain'))
+
+        self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'maxent'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    # Test ANN, Classification Tree & GAM together
+    def test_ann_classification_GAM_5km_triple(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "ann_classification_gam_5km_2layers_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('ann classification and gam in 5km experiment together')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
+        new_sdm_page.select_sdm_algorithm('Classification Tree')
+        new_sdm_page.select_sdm_algorithm('Generalized Additive Model')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+
+        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B01 - Annual Mean Temperature')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+                                                   'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(27, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('ann.Rout', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'ann'))
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('cta.Rout', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'cta'))
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('gam.Rout', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'gam'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    # Test MaxEnt and ANN and Circles together
+    def test_maxent_ann_circles_1km_triple(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "maxent_ann_circles_1km_2layers_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('maxent ann circles 1km 2 layers')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
+        new_sdm_page.select_sdm_algorithm('Maximum Entropy Modeling')
+        new_sdm_page.select_sdm_algorithm('Circles')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B01 - Annual Mean Temperature')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(35, experiment_view.get_num_output_files())
+
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('ann.Rout', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'ann'))
+
+        self.assertTrue(experiment_view.has_result_file('dismo.eval.object.RData', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('Phascolarctus.cinereus.model.object.RData', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('lon_response.png', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('lat_response.png', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_01_response.png', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('bioclim_02_response.png', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('results.html', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('AUC.png', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('circles.Rout', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('maxent_like_VariableImportance.csv', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('biomod2_like_VariableImportance.csv', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('results.html.zip', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'circles'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'circles'))
+
+        self.assertTrue(experiment_view.has_result_file('maxentResults.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('maxent.Rout', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json', 'maxent'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    # Test ANN, BRT, FDA and GLM together.
+    def test_ann_brt_fda_glm_1km_quad(self):
+        pass
