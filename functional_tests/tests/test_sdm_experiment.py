@@ -1554,3 +1554,46 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Cleanup
         self.delete_experiment(experiment_name)
+
+    def test_ann_with_pseudo_points(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "ann_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Artificial Neural Network with pseudo occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Artificial Neural Network')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_pseudo_absences("10000")
+        new_sdm_page.select_environment()
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_successfully())
+
+        # Check results
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', "ann"))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('ann.Rout'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)

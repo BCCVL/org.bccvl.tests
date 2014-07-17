@@ -45,6 +45,17 @@ class SDMExperimentPage(BasePage):
         path_string = 'table.bccvl-absencestable input[data-friendlyname="radio_' + dataset_name + '"]'
         self.driver.find_element_by_css_selector(path_string).click()
 
+    def select_pseudo_absences(self, value):
+        elements = self.driver.find_elements_by_css_selector('a.accordion-toggle')
+        for item in elements:
+            if "Pseudo" in item.text:
+                item.click()
+                break
+
+        self.driver.find_element_by_id("form-widgets-species_pseudo_absence_points-0").click()
+        self.driver.find_element_by_id("form-widgets-species_number_pseudo_absence_points").clear()
+        self.driver.find_element_by_id("form-widgets-species_number_pseudo_absence_points").send_keys(value)
+
     def select_current_climate_layers(self, string):
         # Yes, there is a type here, but that's how it is on the backend
         path_string = "(//tr[@data-friendlyname='collapbsable_climatelayer_" + string + "'])"
