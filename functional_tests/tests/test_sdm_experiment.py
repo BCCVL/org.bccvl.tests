@@ -1206,7 +1206,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.delete_experiment(experiment_name)
 
     # Test ANN, Classification Tree & GAM together
-    def test_ann_classification_GAM_5km_triple(self):
+    def test_ann_classification_gam_5km_triple(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
         homepage = login_page.valid_login(self.username, self.password)
