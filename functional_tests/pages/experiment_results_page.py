@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from datasets_list_page import DatasetsListPage
 from base_page import BasePage
 
 
@@ -25,6 +26,17 @@ class ExperimentResultsPage(BasePage):
 
     def has_completed_successfully(self):
         return self.experiment_status_completed == self._get_experiment_status()
+
+    def click_datasets(self):
+        self.driver.find_element_by_css_selector('a.bccvllinks-datasets').click()
+        new_dataset_list_page = DatasetsListPage(self.driver)
+        return new_dataset_list_page
+
+    def click_experiments(self):
+        self.driver.find_element_by_css_selector('a.bccvllinks-experiments').click()
+        from experiment_list_page import ExperimentListPage
+        new_dataset_list_page = ExperimentListPage(self.driver)
+        return new_dataset_list_page
 
     def has_completed_with_failure(self):
         return self.experiment_status_failed == self._get_experiment_status()
@@ -65,15 +77,6 @@ class ExperimentResultsPage(BasePage):
                         results.append(item.find_element_by_css_selector("h1"))
 
             return results
-
-
-
-
-
-
-
-
-
 
     def _get_result_table_header(self):
         return self.driver.find_element_by_xpath("//table[@id='" + self.results_table_id + "']/tbody/tr[@class='info']/td")

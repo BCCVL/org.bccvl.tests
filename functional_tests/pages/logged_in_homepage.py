@@ -15,8 +15,8 @@ class LoggedInHomepage(Homepage):
         datasets_page = DatasetsListPage(self.driver)
         return datasets_page
 
-    def click_logout(self):
+    def click_logout(self, username="admin"):
         from homepage import Homepage
-        self.driver.find_element_by_link_text("admin").click()
+        self.driver.find_element_by_link_text(username).click()
         self.driver.find_element_by_link_text("Log out").click()
         return Homepage(self.driver)

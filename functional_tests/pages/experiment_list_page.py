@@ -4,7 +4,7 @@ from experiment_sdm_page import SDMExperimentPage
 from experiment_projection_page import ProjectionExperimentPage
 from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
-
+from sharing_page import SharingPage
 
 class ExperimentListPage(BasePage):
 
@@ -59,7 +59,7 @@ class ExperimentListPage(BasePage):
         for name in names:
             if experiment_name in name.text:
                 buttons[index].click()
-                return
+                return SharingPage(self.driver)
             else:
                 index = index + 1
 
@@ -72,18 +72,24 @@ class ExperimentListPage(BasePage):
         self.driver.find_element_by_id('sharing-user-group-search').clear()
         self.driver.find_element_by_id('sharing-user-group-search').send_keys(name)
 
-    # On the share page you can tick "can view" for certain people
-    # TODO: This is quite difficult at the moment because depending on who you are the page looks difference
-    # i.e. admins see add edit review and review, where as other users only see view.
-    def check_can_view(self, name):
-        pass
 
-    def select_share_save(self):
-        self.driver.find_element_by_id('sharing-save-button').click()
+    # Returns a list of all the names of the experiments.
+    def get_experiment_list(self):
+        experiments = []
 
-    def select_share_cancel(self):
-        self.driver.find_element_by_css_selector('input.btn-danger').click()
+        # Every 2nd one is the experiment type - discard
+        elements = self.driver.find_elements_by_css_selector('table.bccvl-experimenttable tbody tr h1')
+        discard = False
+        for element in elements:
+            if discard is True:
+                discard = False
+                continue
+            else:
+                discard = True
+                experiments.append(element.text.lower())
 
-    def agree_to_terms_and_conditions(self):
-        self.driver.find_element_by_id("legal-checkbox").click()
+        return experiments
+
+
+
 
