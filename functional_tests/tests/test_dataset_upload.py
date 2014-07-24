@@ -12,6 +12,7 @@ class TestDatasetUpload(BCCVLTestCase):
         homepage = login_page.valid_login(self.username, self.password)
         datasets_page = homepage.click_datasets()
         upload_page = datasets_page.select_dataset_upload()
+        upload_page = upload_page.select_dataset_type("Species Dataset")
         upload_page.upload_file(os.getcwd() + "test.csv")
         upload_page.enter_dataset_title("species_dataset" + generate_timestamp())
         upload_page.enter_dataset_description("bleh")

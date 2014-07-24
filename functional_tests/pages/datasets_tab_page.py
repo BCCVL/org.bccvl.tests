@@ -1,5 +1,5 @@
 from base_page import BasePage
-
+from selenium.webdriver.support.select import Select
 
 # DatasetsTabPage represents everything above and including
 # the three navigation tabs common to dataset list, dataset discover
@@ -25,18 +25,18 @@ class DatasetsTabPage(BasePage):
         return new_dataset_upload_page
 
     def select_dataset_type(self, type):
-        self.driver.find_element_by_id("drop1").click()
+        select = Select(self.driver.find_element_by_id("upload-dataset-type"))
 
         if type == "Species Dataset":
-            self.driver.find_element_by_id("upload-species").click()
+            select.select_by_value("species")
             from datasets_upload_species_dataset_page import DatasetsUploadSpeciesDatasetPage
             new_dataset_upload_page = DatasetsUploadSpeciesDatasetPage(self.driver)
         elif type == "Environmental Layer":
-            self.driver.find_element_by_id("upload-layer").click()
+            select.select_by_value("environmental-layer")
             from datasets_upload_environmental_layer_page import DatasetsUploadEnvironmentalLayerPage
             new_dataset_upload_page = DatasetsUploadEnvironmentalLayerPage(self.driver)
         else:
-            self.driver.find_element_by_id("upload-trait").click()
+            select.select_by_value("species-trait")
             from datasets_upload_species_trait_page import DatasetsUploadSpeciesTraitPage
             new_dataset_upload_page = DatasetsUploadSpeciesTraitPage(self.driver)
         return new_dataset_upload_page

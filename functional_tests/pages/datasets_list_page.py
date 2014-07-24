@@ -1,8 +1,8 @@
 from datasets_tab_page import DatasetsTabPage
 from sharing_page import SharingPage
+from homepage import Homepage
 
 class DatasetsListPage(DatasetsTabPage):
-
     def click_preview_dataset(self):
         assert True is False
         pass
@@ -29,7 +29,17 @@ class DatasetsListPage(DatasetsTabPage):
     # DatasetObjects which name contains the parameter 'name'
     def get_dataset_list(self):
         dataset_list = []
-        names = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tbody tr h1")
+        data = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tbody tr p")
+        # take the first of each pair.
+        names = []
+        keep = True
+        for data_entry in data:
+            if keep is True:
+                names.append(data_entry)
+                keep = False
+            else:
+                keep = True
+
         for name in names:
             dataset_list.append(name.text.lower())
         return dataset_list
@@ -45,11 +55,11 @@ class DatasetsListPage(DatasetsTabPage):
             return False
 
     # Check if spinner is there for a particular dataset_list item
-    def check_spinner(self,index):
+    def check_spinner(self, index):
         return self._check_dataset_element_exists("i.bccvl-small-spinner", index)
 
     # Check for controls (i.e. visualise, share etc buttons) next to a particular dataset list item
-    def check_controls_exist(self,index):
+    def check_controls_exist(self, index):
         # using not because we look for the failure element, if it's there, we want to return false
         return not self._check_dataset_element_exists("td.bccvl-table-controls i.dataset-import-failed", index)
 

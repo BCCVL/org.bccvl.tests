@@ -5,11 +5,13 @@ from experiment_projection_page import ProjectionExperimentPage
 from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
 from sharing_page import SharingPage
+from experiment_speies_trait_page import SpeciesTraitExperimentPage
+
 
 class ExperimentListPage(BasePage):
 
     def click_new_sdm_experiment(self):
-        self.driver.find_element_by_link_text("new SDM Experiment").click()
+        self.driver.find_element_by_css_selector("a.bccvllinks-experiment-new").click()
         new_sdm_experiment_page = SDMExperimentPage(self.driver)
         return new_sdm_experiment_page
 
@@ -27,6 +29,10 @@ class ExperimentListPage(BasePage):
         self.driver.find_element_by_link_text("new Biodiverse Experiment").click()
         new_biodiverse_experiment = BiodiverseExperimentPage(self.driver)
         return new_biodiverse_experiment
+
+    def click_new_species_trait_model(self):
+        self.driver.find_element_by_css_selector("a.bccvllinks-experiment-speciestrait-new").click()
+        return SpeciesTraitExperimentPage(self.driver)
 
     def click_share_experiment(self, experiment_name):
         buttons = self.driver.find_elements_by_css_selector("table.bccvl-experimenttable tbody tr td.bccvl-table-controls a.sharing-btn")

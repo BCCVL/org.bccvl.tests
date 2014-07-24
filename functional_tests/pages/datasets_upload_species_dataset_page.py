@@ -16,13 +16,11 @@ class DatasetsUploadSpeciesDatasetPage(DatasetsTabPage):
         self.driver.find_element_by_name("addspecies.widgets.description").send_keys(description)
 
     def select_dataset_genre(self, genre):
-        # Index 0 is dataset genre, Index 1 is sepcies layer
-        select = Select(self.driver.find_elements_by_css_selector("div.controls select")[0])
+        select = Select(self.driver.find_element_by_name("addspecies.widgets.datagenre:list"))
         select.select_by_visible_text(genre)
 
     def select_species_layer(self, layer):
-        # Index 0 is dataset genre, Index 1 is sepcies layer
-        select = Select(self.driver.find_elements_by_css_selector("div.controls select")[1])
+        select = Select(self.driver.find_element_by_name("addspecies.widgets.specieslayer:list"))
         select.select_by_visible_text(layer)
 
     def enter_scientific_name(self, scientific_name):
