@@ -38,7 +38,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
@@ -61,7 +61,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_SINGLE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_CWE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_WE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_result_page.has_result_file('proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse.plout'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix.bds'))
         self.assertTrue(experiment_result_page.has_result_file('pstats.json'))
@@ -105,7 +105,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
@@ -128,7 +128,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_SINGLE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_CWE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_WE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_result_page.has_result_file('proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse.plout'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix.bds'))
         self.assertTrue(experiment_result_page.has_result_file('pstats.json'))
@@ -171,7 +171,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
@@ -194,7 +194,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_SINGLE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_CWE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_WE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_result_page.has_result_file('proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse.plout'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix.bds'))
         self.assertTrue(experiment_result_page.has_result_file('pstats.json'))

@@ -5,7 +5,7 @@ from experiment_projection_page import ProjectionExperimentPage
 from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
 from sharing_page import SharingPage
-from experiment_speies_trait_page import SpeciesTraitExperimentPage
+from experiment_species_trait_page import SpeciesTraitExperimentPage
 
 
 class ExperimentListPage(BasePage):
@@ -21,12 +21,12 @@ class ExperimentListPage(BasePage):
         return view_experiment_page
 
     def click_new_projection_experiment(self):
-        self.driver.find_element_by_link_text("new Projection Experiment").click()
+        self.driver.find_element_by_link_text("New Projection Experiment").click()
         new_projection_experiment = ProjectionExperimentPage(self.driver)
         return new_projection_experiment
 
     def click_new_biodiverse_experiment(self):
-        self.driver.find_element_by_link_text("new Biodiverse Experiment").click()
+        self.driver.find_element_by_link_text("New Biodiverse Experiment").click()
         new_biodiverse_experiment = BiodiverseExperimentPage(self.driver)
         return new_biodiverse_experiment
 
@@ -35,6 +35,7 @@ class ExperimentListPage(BasePage):
         return SpeciesTraitExperimentPage(self.driver)
 
     def click_share_experiment(self, experiment_name):
+
         buttons = self.driver.find_elements_by_css_selector("table.bccvl-experimenttable tbody tr td.bccvl-table-controls a.sharing-btn")
 
         # Returns a list of TRs.
@@ -52,7 +53,7 @@ class ExperimentListPage(BasePage):
             if index == 0:
                 # put them into names
                 # get the h1 which is the actual text of the name
-                names.append(td.find_element_by_css_selector("h1"))
+                names.append(td.find_element_by_css_selector("p"))
             index = index + 1
 
         # there should be a share button for every experiment
@@ -83,16 +84,15 @@ class ExperimentListPage(BasePage):
     def get_experiment_list(self):
         experiments = []
 
-        # Every 2nd one is the experiment type - discard
-        elements = self.driver.find_elements_by_css_selector('table.bccvl-experimenttable tbody tr h1')
-        discard = False
-        for element in elements:
-            if discard is True:
-                discard = False
-                continue
-            else:
-                discard = True
-                experiments.append(element.text.lower())
+        entries = self.driver.find_elements_by_css_selector('table.bccvl-experimenttable tbody tr')
+
+        # First one is name, 2nd is type, and so on, so keep every 1 out of 2
+        keep = True
+        for entry in entries:
+            if keep:
+                experiments.append(entry.find_element_by_css_selector('td.bccvl-table-label p').text)
+
+            keep = not keep
 
         return experiments
 

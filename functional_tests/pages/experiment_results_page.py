@@ -74,7 +74,7 @@ class ExperimentResultsPage(BasePage):
                         continue;
                     else:
                         # Append the filename onto the list
-                        results.append(item.find_element_by_css_selector("h1"))
+                        results.append(item.find_element_by_css_selector("p"))
 
             return results
 

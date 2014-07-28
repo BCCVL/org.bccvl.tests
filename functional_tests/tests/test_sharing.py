@@ -21,9 +21,7 @@ class TestSharing(ExperimentTestCase):
         homepage = login_page.valid_login(self.username, self.password)
         experiment_page = homepage.click_experiments()
         new_sdm_page = experiment_page.click_new_sdm_experiment()
-
         experiment_name = "sharing_test_" + generate_timestamp()
-
         new_sdm_page.enter_experiment_name(experiment_name)
         new_sdm_page.enter_experiment_description('Artificial Neural Network with Koala occurrences')
         new_sdm_page.select_configuration()
@@ -43,6 +41,7 @@ class TestSharing(ExperimentTestCase):
         experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
 
+
         # Navigate back to experiment list
         experiment_page = experiment_view.click_experiments()
 
@@ -59,7 +58,7 @@ class TestSharing(ExperimentTestCase):
         # Log out
         logged_out_homepage = homepage.click_logout()
         login_page = logged_out_homepage.click_login()
-        homepage = login_page.valid_login("testuser", "Pass.123")
+        login_page.valid_login("testuser", "Pass.123")
         experiment_page = homepage.click_experiments()
 
         experiments = experiment_page.get_experiment_list()
@@ -68,7 +67,7 @@ class TestSharing(ExperimentTestCase):
         # Log out so we can delete it
         logged_out_homepage = homepage.click_logout("test user")
         login_page = logged_out_homepage.click_login()
-        homepage = login_page.valid_login(self.username, self.password)
+        login_page.valid_login(self.username, self.password)
 
         # Cleanup
         self.delete_experiment(experiment_name)

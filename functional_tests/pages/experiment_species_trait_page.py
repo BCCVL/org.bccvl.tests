@@ -33,10 +33,12 @@ class SpeciesTraitExperimentPage(BasePage):
         self.driver.find_element_by_id("form-widgets-formula").send_keys(formula)
 
     def select_FRMPA(self, model):
-        if model == "Linear Models":
-            self.driver.find_element_by_id("form-widgets-algorithm-0").click()
-        else:
-            assert True is False
+        options = self.driver.find_elements_by_css_selector('table.bccvl-algorithmtable tbody tr')
+
+        for option in options:
+            if model == option.find_element_by_css_selector('td.bccvl-table-label h1').text:
+                option.find_element_by_css_selector('td.bccvl-table-choose input').click()
+                return
 
     def select_input_dataset(self, name):
         items = self.driver.find_elements_by_css_selector('table.bccvl-datasetstable tbody tr')
