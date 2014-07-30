@@ -114,10 +114,11 @@ class TestSharing(ExperimentTestCase):
         sharing_page = datasets_page.click_share_dataset("pig")
         sharing_page.check_can_view("Logged-in users")
         sharing_page.agree_to_terms_and_conditions()
-        sharing_page.select_share_save()
+        datasets_page = sharing_page.select_share_save()
+        logged_in_homepage = datasets_page.click_homepage()
 
         # Log out
-        logged_out_homepage = homepage.click_logout()
+        logged_out_homepage = logged_in_homepage.click_logout("admin")
         login_page = logged_out_homepage.click_login()
         homepage = login_page.valid_login("testuser", "Pass.123")
         datasets_page = homepage.click_datasets()
@@ -262,15 +263,17 @@ class TestSharing(ExperimentTestCase):
         sharing_page = datasets_page.click_share_dataset("rat")
         sharing_page.check_can_view("Logged-in users")
         sharing_page.agree_to_terms_and_conditions()
-        sharing_page.select_share_save()
+        datasets_list = sharing_page.select_share_save()
+        logged_in_homepage = datasets_list.click_homepage()
+
         # Log out
-        logged_out_homepage = homepage.click_logout()
+        logged_out_homepage = logged_in_homepage.click_logout()
         login_page = logged_out_homepage.click_login()
         homepage = login_page.valid_login("testuser", "Pass.123")
         datasets_page = homepage.click_datasets()
 
         datasets = datasets_page.get_dataset_list()
-        self.assertTrue("rat" in datasets[0].lower())
+        self.assertNotEqual("rat" in datasets[0].lower(), -1, "Wrong dataset in dataset list")
 
         # ************************************#
         # At this point, we log back into admin to unshare pig
@@ -284,13 +287,13 @@ class TestSharing(ExperimentTestCase):
         sharing_page = datasets_page.click_share_dataset("rat")
         sharing_page.check_can_view("Logged-in users")
         sharing_page.agree_to_terms_and_conditions()
-        sharing_page.select_share_save()
+        datasets_list = sharing_page.select_share_save()
+        logged_in_homepage = datasets_list.click_homepage()
 
-        logged_out_homepage = homepage.click_logout()
+        logged_out_homepage = logged_in_homepage.click_logout()
         login_page = logged_out_homepage.click_login()
         homepage = login_page.valid_login("testuser", "Pass.123")
         datasets_page = homepage.click_datasets()
         datasets = datasets_page.get_dataset_list()
 
-        self.assertFalse("rat" in datasets[0].lower())
-        self.assertTrue("pig" in datasets[0].lower())
+        self.assertNotEqual("pig" in datasets[0].lower(), -1, "Wrong dataset in the dataset list")

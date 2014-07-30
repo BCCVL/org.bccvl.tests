@@ -1,5 +1,6 @@
 from base_page import BasePage
 
+
 class SharingPage(BasePage):
 
     # On the share page you can tick "can view" for certain people
@@ -29,6 +30,8 @@ class SharingPage(BasePage):
 
     def select_share_save(self):
         self.driver.find_element_by_id('sharing-save-button').click()
+        from datasets_list_page import DatasetsListPage
+        return DatasetsListPage(self.driver)
 
     def select_share_cancel(self):
         self.driver.find_element_by_css_selector('input.btn-danger').click()

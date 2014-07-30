@@ -1,6 +1,6 @@
 from datasets_tab_page import DatasetsTabPage
 from sharing_page import SharingPage
-from homepage import Homepage
+
 
 class DatasetsListPage(DatasetsTabPage):
 
@@ -27,9 +27,7 @@ class DatasetsListPage(DatasetsTabPage):
         controls[index].click()
 
     def click_share_dataset(self, name):
-        # TODO: This needs to be rewritten for the new UI
-        assert True is False
-        names = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tr td h1")
+        names = self.driver.find_elements_by_css_selector("td.bccvl-table-label p:first-child")
 
         # Figure out where it is in the list
         index = 0
@@ -39,10 +37,10 @@ class DatasetsListPage(DatasetsTabPage):
             index = index + 1
 
         # Get the share button at that index
-        controls = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tr td.bccvl-table-controls")
+        controls = self.driver.find_elements_by_css_selector("i.icon-share")
 
         # Get the index-th one.
-        controls[index].find_element_by_css_selector("a.sharing-btn").click()
+        controls[index].click()
 
         return SharingPage(self.driver)
 
@@ -50,18 +48,9 @@ class DatasetsListPage(DatasetsTabPage):
     # DatasetObjects which name contains the parameter 'name'
     def get_dataset_list(self):
         dataset_list = []
-        data = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tbody tr p")
-        # take the first of each pair.
-        names = []
-        keep = True
-        for data_entry in data:
-            if keep is True:
-                names.append(data_entry)
-                keep = False
-            else:
-                keep = True
+        data = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tbody tr p:first-child")
 
-        for name in names:
+        for name in data:
             dataset_list.append(name.text.lower())
         return dataset_list
 
@@ -87,4 +76,10 @@ class DatasetsListPage(DatasetsTabPage):
     def check_visualised_something(self):
         # Currently not implemented. iframes cannot be straight-forwardly looked in
         # with selenium
+        assert False is True
         pass
+
+    def click_homepage(self):
+        self.driver.find_element_by_css_selector('a.bccvllinks-home').click()
+        from logged_in_homepage import LoggedInHomepage
+        return LoggedInHomepage(self.driver)

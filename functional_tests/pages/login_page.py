@@ -12,6 +12,5 @@ class LoginPage(BasePage):
         self.driver.find_element_by_id("__ac_password").send_keys(password)
         self.driver.find_element_by_id("legals-checkbox").click()
         self.driver.find_element_by_css_selector("input.btn-success").click()
-        # self.driver.find_element_by_name("submit").click()
         logged_in_homepage = LoggedInHomepage(self.driver)
         return logged_in_homepage
