@@ -6,6 +6,7 @@ from experiment_biodiverse_page import BiodiverseExperimentPage
 from experiment_results_page import ExperimentResultsPage
 from sharing_page import SharingPage
 from experiment_species_trait_page import SpeciesTraitExperimentPage
+from experiment_ensemble_page import EnsembleExperimentPage
 
 
 class ExperimentListPage(BasePage):
@@ -33,6 +34,10 @@ class ExperimentListPage(BasePage):
     def click_new_species_trait_model(self):
         self.driver.find_element_by_css_selector("a.bccvllinks-experiment-speciestrait-new").click()
         return SpeciesTraitExperimentPage(self.driver)
+
+    def click_new_ensemble_experiment(self):
+        self.driver.find_element_by_link_text('New Ensemble Analysis').click()
+        return EnsembleExperimentPage(self.driver)
 
     def click_share_experiment(self, experiment_name):
 

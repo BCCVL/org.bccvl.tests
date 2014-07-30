@@ -1,11 +1,12 @@
 from base_page import BasePage
 from logged_in_homepage import LoggedInHomepage
-
+import time
 
 class LoginPage(BasePage):
 
     def valid_login(self, username, password):
         self.driver.find_element_by_id("personaltools-login").click()
+        time.sleep(2)
         self.driver.find_element_by_id("login-basic").click()
         self.driver.find_element_by_id("__ac_name").send_keys(username)
         self.driver.find_element_by_id("__ac_password").clear()
