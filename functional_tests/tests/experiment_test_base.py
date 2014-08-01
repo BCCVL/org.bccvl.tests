@@ -3,10 +3,9 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoSuchElementException
 from bccvl_testcase import BCCVLTestCase
 
+
 # This is the base class of all classes that test experiments.
 # Used so we can keep track of experiments & delete them afterwards.
-
-
 class ExperimentTestCase(BCCVLTestCase):
 
     def delete_all_experiments(self):

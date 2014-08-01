@@ -2,6 +2,7 @@ from experiment_test_base import ExperimentTestCase
 from pages.homepage import Homepage
 from test_utils import *
 
+
 # Test cases for SDM experiments - testing all algorithms
 class TestBiodiverseExperiment(ExperimentTestCase):
 
@@ -70,7 +71,6 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.delete_experiment(sdm_experiment_name)
         self.delete_experiment(projection_experiment_name)
         self.delete_experiment(biodiverse_experiment_name)
-
 
     def test_biodiverse_2(self):
         homepage = Homepage(self.driver)

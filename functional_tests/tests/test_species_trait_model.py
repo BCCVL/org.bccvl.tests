@@ -3,6 +3,7 @@ from pages.homepage import Homepage
 from test_utils import generate_timestamp
 import os
 
+
 class TestSpeciesTraitModel(ExperimentTestCase):
 
     def test_STM(self):

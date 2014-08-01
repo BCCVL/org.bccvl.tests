@@ -4,6 +4,7 @@ from test_utils import generate_timestamp
 import os
 from test_utils import *
 
+
 class TestEnsemble(ExperimentTestCase):
 
     def test_ensemble_SDM(self):

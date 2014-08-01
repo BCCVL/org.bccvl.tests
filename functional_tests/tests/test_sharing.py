@@ -3,14 +3,15 @@ from pages.homepage import Homepage
 from test_utils import generate_timestamp
 import time
 
+
 # These tests test sharing experiments and datasets between users
-
 # It only uses built-in authentication since tests cannot use AAF to log in
-
+# ***********************************************************************
 # These tests assume a built-in authentication test user has been created
 # with:
 # Username: testuser
 # Password: Pass.123
+# ***********************************************************************
 
 class TestSharing(ExperimentTestCase):
 

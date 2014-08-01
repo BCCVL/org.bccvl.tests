@@ -1,6 +1,7 @@
 from base_page import BasePage
 from selenium.webdriver.support.select import Select
 
+
 # DatasetsTabPage represents everything above and including
 # the three navigation tabs common to dataset list, dataset discover
 # and dataset upload

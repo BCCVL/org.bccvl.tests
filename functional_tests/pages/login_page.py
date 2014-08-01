@@ -2,6 +2,7 @@ from base_page import BasePage
 from logged_in_homepage import LoggedInHomepage
 import time
 
+
 class LoginPage(BasePage):
 
     def valid_login(self, username, password):

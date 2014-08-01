@@ -17,7 +17,7 @@ class SharingPage(BasePage):
         assert len(options) % 5 == 0
 
         index = 0
-        while (index < len(options) / 5):
+        while index < len(options) / 5:
             # Names are index 0, 5, 10 etc. hence 5*index
             if name.lower() in options[(5*index)].text.lower():
                 # We've found it.

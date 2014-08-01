@@ -11,6 +11,8 @@ class TestBCCVL(BCCVLTestCase):
         login_page = homepage.click_login()
         homepage = login_page.valid_login(self.username, self.password)
         # Jira ticket 143 is reported for this
+        # Sometimes after logging in, it does not redirect to the logged in homepage
+        # i.e. the title will be wrong
 #        self.assertEqual("BCCVL Home", homepage.title)
 
     def test_app_logout(self):
