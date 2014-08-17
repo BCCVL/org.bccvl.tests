@@ -17,7 +17,7 @@ class SDMExperimentPage(BasePage):
         self.driver.find_element_by_link_text("Absences").click()
 
     def select_environment(self):
-        self.driver.find_element_by_link_text("Environment").click()
+        self.driver.find_element_by_link_text("Environment & Climate").click()
 
     def select_review(self):
         self.driver.find_element_by_link_text("Review").click()
