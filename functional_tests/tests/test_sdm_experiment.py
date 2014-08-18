@@ -676,9 +676,7 @@ class TestSDMExperiment(ExperimentTestCase):
 
         # Wait until completion
         experiment_view.wait_for_experiment_to_complete()
-
-        # FDA fails with 1km climate layer
-        self.assertTrue(experiment_view.has_completed_with_failure())
+        self.assertTrue(experiment_view.has_completed_successfully())
 
         # Cleanup
         self.delete_experiment(experiment_name)
