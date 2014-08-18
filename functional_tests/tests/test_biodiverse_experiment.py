@@ -39,7 +39,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
@@ -105,7 +105,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
@@ -171,7 +171,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         new_biodiverse_page.select_projection_experiments(projection_experiment_name)
         new_biodiverse_page.select_species("Phascolarctus cinereus")
         new_biodiverse_page.select_years("2015")
-        new_biodiverse_page.select_layers("proj_SRESA1B_cccma-cgcm31_2015_Phascolarctus.cinereus.tif")
+        new_biodiverse_page.select_layers("proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif")
 
         # select the configuration tab
         new_biodiverse_page.select_configuration_tab()
