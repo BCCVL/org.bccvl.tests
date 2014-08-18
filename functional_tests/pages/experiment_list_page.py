@@ -22,7 +22,7 @@ class ExperimentListPage(BasePage):
         return view_experiment_page
 
     def click_new_projection_experiment(self):
-        self.driver.find_element_by_link_text("New Projection Experiment").click()
+        self.driver.find_element_by_link_text("New Climate Change Experiment").click()
         new_projection_experiment = ProjectionExperimentPage(self.driver)
         return new_projection_experiment
 
@@ -100,7 +100,3 @@ class ExperimentListPage(BasePage):
             keep = not keep
 
         return experiments
-
-
-
-
