@@ -29,7 +29,7 @@ class BiodiverseExperimentPage(BasePage):
         self.driver.find_element_by_css_selector("td.bccvl-table-choose a").click()
         self.driver.find_element_by_css_selector("div.select2-search input").clear()
         self.driver.find_element_by_css_selector("div.select2-search input").send_keys(threshold)
-        self.driver.find_elements_by_css_selector(".select2-result")[0].click()
+        self.driver.find_elements_by_css_selector(".select2-result")[1].click()
 
     def select_cluster_size(self, size):
         select = Select(self.driver.find_element_by_id("form-widgets-cluster_size"))
