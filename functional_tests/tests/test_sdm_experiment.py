@@ -404,7 +404,7 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_completed_with_failure())
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
-        self.assertEqual(9, experiment_view.get_num_output_files())
+        self.assertEqual(3, experiment_view.get_num_output_files())
         self.assertTrue(experiment_view.has_result_file('cta.Rout'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
