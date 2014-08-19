@@ -405,14 +405,8 @@ class TestSDMExperiment(ExperimentTestCase):
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
         self.assertTrue(experiment_view.has_result_file('cta.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
-        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
-        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
         # Cleanup
