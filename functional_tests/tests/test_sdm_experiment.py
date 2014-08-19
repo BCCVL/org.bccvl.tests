@@ -375,7 +375,7 @@ class TestSDMExperiment(ExperimentTestCase):
         # Cleanup
         self.delete_experiment(experiment_name)
 
-    def test_classification_tree_1km(self):
+    def test_classification_tree_1km_fail(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
         homepage = login_page.valid_login(self.username, self.password)
@@ -392,6 +392,49 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
+        new_sdm_page.select_environment()
+        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+                                                   'B14 - Precipitation of Driest Month')
+        new_sdm_page.select_run()
+        experiment_view = new_sdm_page.select_review_start_experiment()
+
+        # Wait until completion
+        experiment_view.wait_for_experiment_to_complete()
+        self.assertTrue(experiment_view.has_completed_with_failure())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('cta.Rout'))
+        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
+
+        # Cleanup
+        self.delete_experiment(experiment_name)
+
+    def test_classification_tree_1km(self):
+        homepage = Homepage(self.driver)
+        login_page = homepage.click_login()
+        homepage = login_page.valid_login(self.username, self.password)
+        experiment_page = homepage.click_experiments()
+        new_sdm_page = experiment_page.click_new_sdm_experiment()
+
+        experiment_name = "ct_" + generate_timestamp()
+
+        new_sdm_page.enter_experiment_name(experiment_name)
+        new_sdm_page.enter_experiment_description('Classification Tree Experiment with Koala occurrences')
+        new_sdm_page.select_configuration()
+        new_sdm_page.select_sdm_algorithm('Classification Tree')
+        new_sdm_page.select_occurrences()
+        new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
+        new_sdm_page.select_absences()
+        new_sdm_page.select_pseudo_absences("100")
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
