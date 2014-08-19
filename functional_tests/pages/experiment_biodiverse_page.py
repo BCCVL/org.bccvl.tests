@@ -5,16 +5,16 @@ from selenium.webdriver.support.ui import Select
 
 class BiodiverseExperimentPage(BasePage):
     def select_source_projection_tab(self):
-        self.driver.find_element_by_link_text("Source Projection").click()
+        self.switch_tab("Source Projection")
 
     def select_configuration_tab(self):
-        self.driver.find_element_by_link_text("Configuration").click()
+        self.switch_tab("Configuration")
 
     def select_description(self):
-        self.driver.find_element_by_link_text("Description").click()
+        self.switch_tab("Description")
 
     def select_run(self):
-        self.driver.find_element_by_link_text("Run").click()
+        self.switch_tab("Run")
 
     def select_run_experiment(self):
         self.driver.find_element_by_name("form.buttons.save").click()
