@@ -140,7 +140,8 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.delete_experiment(projection_experiment_name)
         self.delete_experiment(biodiverse_experiment_name)
 
-    def test_biodiverse_3(self):
+    def test_biodiverse_3_fail(self):
+        # Fails due to bad threshold selected
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
         homepage = login_page.valid_login(self.username, self.password)
@@ -185,20 +186,13 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         experiment_result_page = new_biodiverse_page.select_run_experiment()
 
         experiment_result_page.wait_for_experiment_to_complete()
-        self.assertTrue(experiment_result_page.has_completed_successfully())
+        self.assertTrue(experiment_result_page.has_completed_with_failure())
 
         # Check results
         self.assertTrue(experiment_result_page.has_results_header(biodiverse_experiment_name))
 
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_REDUNDANCY_SET1.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_REDUNDANCY_ALL.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_RICHNESS.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_SINGLE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_CWE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_WE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_2015_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse.plout'))
-        self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix.bds'))
         self.assertTrue(experiment_result_page.has_result_file('pstats.json'))
 
         #Cleanup
