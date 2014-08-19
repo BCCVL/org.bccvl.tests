@@ -1,6 +1,8 @@
 from experiment_test_base import ExperimentTestCase
 from pages.homepage import Homepage
-from test_utils import *
+from test_utils import (create_sdm,
+                        create_projection,
+                        generate_timestamp)
 
 
 # Test cases for SDM experiments - testing all algorithms
