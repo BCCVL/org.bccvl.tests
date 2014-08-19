@@ -1,6 +1,11 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import StaleElementReferenceException
 from datasets_list_page import DatasetsListPage
 from base_page import BasePage
+import logging
+
+
+LOG = logging.getLogger(__name__)
 
 
 class ExperimentResultsPage(BasePage):
@@ -85,5 +90,25 @@ class ExperimentResultsPage(BasePage):
         return self.driver.find_element_by_css_selector("div.bccvl-expstatus").get_attribute("data-status")
 
     def _is_experiment_complete(self):
-        experiment_status = self._get_experiment_status()
-        return experiment_status in [self.experiment_status_completed, self.experiment_status_failed]
+        # try to avoid race condition. The js on the experiment result
+        # page refreshes the whole page automatically. If that happens
+        # while selenium is checking for elements, it will fail
+        # because all the previously selected elements are no longer available.
+        # (StaleElementReferenceException: Message: u'Element not found in the cache - perhaps the page has changed since it was looked up')
+        # selenium.wait_for_condition(
+        #     "selenium.browserbot.getCurrentWindow().jQuery.active== 0",
+        #     60000)
+        count = 5
+        while count:
+            try:
+                experiment_status = self._get_experiment_status()
+                return experiment_status in [self.experiment_status_completed, self.experiment_status_failed]
+            except StaleElementReferenceException:
+                count -= 1
+                if not count:
+                    raise
+                LOG.info("Page has been reloaded, let's wait a second and retry %d more times", count)
+
+
+        # Flag: newPageLoaded
+        # func: wait_for_page_to_load
