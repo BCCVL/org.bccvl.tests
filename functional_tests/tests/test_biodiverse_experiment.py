@@ -130,7 +130,7 @@ class TestBiodiverseExperiment(ExperimentTestCase):
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_SINGLE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_CWE.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix_ENDW_WE.tif'))
-        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_2015_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_result_page.has_result_file('proj_RCP3PD_gfdl-cm20_2015_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse.plout'))
         self.assertTrue(experiment_result_page.has_result_file('biodiverse_prefix.bds'))
         self.assertTrue(experiment_result_page.has_result_file('pstats.json'))
