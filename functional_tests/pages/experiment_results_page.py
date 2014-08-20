@@ -52,7 +52,7 @@ class ExperimentResultsPage(BasePage):
     def _get_output_file_names(self, algorithm=None):
 
         if algorithm == None: # return all
-            return self.driver.find_elements_by_css_selector("table#" + self.results_table_id + " p")
+            return self.driver.find_elements_by_css_selector("table#" + self.results_table_id + " tr:not(.info) p:first-child")
         else: # only return the ones relevant to the algorithm
             items = self.driver.find_elements_by_css_selector("table#" + self.results_table_id + " tbody tr td:first-child")
 
