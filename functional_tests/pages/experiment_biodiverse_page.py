@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import Select
 
 class BiodiverseExperimentPage(BasePage):
     def select_source_projection_tab(self):
-        self.switch_tab("Source Projection")
+        self.switch_tab("Source SDM Experiment")
 
     def select_configuration_tab(self):
         self.switch_tab("Configuration")
