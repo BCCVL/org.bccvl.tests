@@ -6,7 +6,7 @@ import time
 class LoginPage(BasePage):
 
     def valid_login(self, username, password):
-        self.driver.find_element_by_id("personaltools-login").click()
+        self.driver.find_element_by_css_selector("a.bccvllinks-login").click()
         time.sleep(2)
         self.driver.find_element_by_id("login-basic").click()
         self.driver.find_element_by_id("__ac_name").send_keys(username)

@@ -12,7 +12,7 @@ class Homepage(BasePage):
 
     def click_login(self):
         from login_page import LoginPage
-        self.driver.find_element_by_id("personaltools-login").click()
+        self.driver.find_element_by_css_selector("a.bccvllinks-login").click()
         time.sleep(1)
         login_page = LoginPage(self.driver)
         return login_page
