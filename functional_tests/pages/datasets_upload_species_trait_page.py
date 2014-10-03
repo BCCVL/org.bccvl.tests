@@ -18,7 +18,7 @@ class DatasetsUploadSpeciesTraitPage(DatasetsTabPage):
 
     # Can I name this method "sell_your_soul"?
     def agree_to_terms_and_conditions(self):
-        self.driver.find_element_by_id("traits-legal-checkbox").click()
+        self.driver.find_element_by_name("speciestrait.widgets.legalcheckbox:list").click()
 
     def submit(self):
         self.driver.find_element_by_id("speciestrait-buttons-save").click()

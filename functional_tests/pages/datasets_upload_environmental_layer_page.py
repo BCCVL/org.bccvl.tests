@@ -58,7 +58,7 @@ class DatasetsUploadEnvironmentalLayerPage(DatasetsTabPage):
 
     # Can I name this method "sell_your_soul"?
     def agree_to_terms_and_conditions(self):
-        self.driver.find_element_by_id("env-legal-checkbox").click()
+        self.driver.find_element_by_name("climatefuture.widgets.legalcheckbox:list").click()
 
     def submit(self):
         self.driver.find_element_by_name("climatefuture.buttons.save").click()

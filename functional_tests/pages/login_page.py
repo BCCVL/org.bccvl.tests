@@ -6,6 +6,7 @@ class LoginPage(BasePage):
 
     def valid_login(self, username, password):
         self.driver.find_element_by_css_selector("a.bccvllinks-login").click()
+        self.wait_for_visible("login-basic")
         self.driver.find_element_by_id("login-basic").click()
         self.wait_for_visible("__ac_name")
         self.driver.find_element_by_id("__ac_name").send_keys(username)

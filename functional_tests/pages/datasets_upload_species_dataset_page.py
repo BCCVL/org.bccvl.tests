@@ -1,5 +1,4 @@
 from datasets_tab_page import DatasetsTabPage
-from selenium.webdriver.support.ui import Select
 
 
 class DatasetsUploadSpeciesDatasetPage(DatasetsTabPage):
@@ -17,7 +16,7 @@ class DatasetsUploadSpeciesDatasetPage(DatasetsTabPage):
 
     def enter_scientific_name(self, scientific_name):
         # Index 0 is scientific name, 1 is Taxon ID, 2 is Common Name
-        input = self.driver.find_element_by_name("speciesoccurrence.widgets.scientificname")
+        input = self.driver.find_element_by_name("speciesoccurrence.widgets.scientificName")
         input.clear()
         input.send_keys(scientific_name)
 
@@ -33,7 +32,7 @@ class DatasetsUploadSpeciesDatasetPage(DatasetsTabPage):
 
     # Can I name this method "sell_your_soul"?
     def agree_to_terms_and_conditions(self):
-        self.driver.find_element_by_id("dataset-legal-checkbox").click()
+        self.driver.find_element_by_name("speciesoccurrence.widgets.legalcheckbox:list").click()
 
     def submit(self):
         self.driver.find_element_by_name("speciesoccurrence.buttons.save").click()
