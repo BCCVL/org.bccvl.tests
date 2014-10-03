@@ -1,6 +1,24 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException
+
+
+def retry_if_stale(wrapped_func):
+    """
+    Decorator to catch StaleElementReferenceException and retry given func.
+    """
+    def catch_stale_and_retry(*args, **kw):
+        retry = 3
+        while retry:
+            try:
+                return wrapped_func(*args, **kw)
+            except StaleElementReferenceException, e:
+                if retry:
+                    retry -= 1
+                    continue
+                raise e
+    return catch_stale_and_retry
 
 
 class BasePage():
