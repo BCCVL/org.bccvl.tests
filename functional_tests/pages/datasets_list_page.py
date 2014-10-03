@@ -1,6 +1,8 @@
-from datasets_tab_page import DatasetsTabPage
-from sharing_page import SharingPage
+from __future__ import absolute_import
+from .datasets_tab_page import DatasetsTabPage
+from .sharing_page import SharingPage
 from selenium.webdriver.support.ui import WebDriverWait
+from .base_page import retry_if_stale
 
 
 class DatasetsListPage(DatasetsTabPage):
@@ -61,6 +63,9 @@ class DatasetsListPage(DatasetsTabPage):
     # used to find spinners and controls
     def _check_dataset_element_exists(self, element_name, index):
         row = self.driver.find_elements_by_css_selector("div.datasets-list-entry div.dataset-list-dropdown")[index]
+        # TODO: we may get a stale reference exception here if the list entry updates
+        #       before the next line. (esp. when we wait until the import spinner
+        #       disappears. At the moment this is handled in the check_spinner method.)
         results = row.find_elements_by_css_selector(element_name)
         if len(results) == 0:
             return False
@@ -68,6 +73,7 @@ class DatasetsListPage(DatasetsTabPage):
             return True
 
     # Check if spinner is there for a particular dataset_list item
+    @retry_if_stale
     def check_spinner(self, index):
         return self._check_dataset_element_exists("i.bccvl-small-spinner", index)
 
