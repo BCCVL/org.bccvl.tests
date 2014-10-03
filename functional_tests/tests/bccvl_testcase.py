@@ -14,7 +14,7 @@ class BCCVLTestCase(unittest.TestCase):
         self.url = os.getenv('BCCVL_TEST_URL', 'https://192.168.100.200/')
 
         # The amount of time selenium will potentially wait in searching for elements. This is blocking.
-        implicit_wait = int(os.getenv('BCCVL_TEST_IMPLICIT_WAIT', '5'))
+        implicit_wait = int(os.getenv('BCCVL_TEST_IMPLICIT_WAIT', '15'))
 
         # Run tests in a virtual display (xvfb)
         virtual_display = os.getenv('BCCVL_TEST_VIRTUAL_DISPLAY', 'false') == 'true'
@@ -31,7 +31,8 @@ class BCCVLTestCase(unittest.TestCase):
         self.driver.implicitly_wait(implicit_wait)
 
         # Maximize the window
-        self.driver.maximize_window()
+        #self.driver.maximize_window()
+        self.driver.set_window_size(1200, 800)
 
         # Go to the bccvl homepage
         self.driver.get(self.url)

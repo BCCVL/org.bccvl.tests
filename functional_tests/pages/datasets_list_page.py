@@ -68,6 +68,13 @@ class DatasetsListPage(DatasetsTabPage):
     def check_spinner(self, index):
         return self._check_dataset_element_exists("i.bccvl-small-spinner", index)
 
+    def wait_while_spinner(self, index, timeout=300):
+        '''
+        Wait up to 5 minues for spinner to disappear.
+        '''
+        WebDriverWait(self.driver, timeout).until(lambda s: not self.check_spinner(index))
+
+
     # Check for controls (i.e. visualise, share etc buttons) next to a particular dataset list item
     def check_controls_exist(self, index):
         # using not because we look for the failure element, if it's there, we want to return false

@@ -1,6 +1,5 @@
 from base_page import BasePage
 from knowledge_base_page import KnowledgeBasePage
-import time
 
 
 class Homepage(BasePage):
@@ -13,6 +12,5 @@ class Homepage(BasePage):
     def click_login(self):
         from login_page import LoginPage
         self.driver.find_element_by_css_selector("a.bccvllinks-login").click()
-        time.sleep(1)
         login_page = LoginPage(self.driver)
         return login_page
