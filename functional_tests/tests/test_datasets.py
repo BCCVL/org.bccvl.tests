@@ -31,8 +31,8 @@ class TestDatasets(BCCVLTestCase):
         self.assertNotEqual(name_list[0].find("koala"), -1, "Could not find koala dataset")
 
         # Check we have one more dataset than before.
-        if number_of_datasets == 100: # The page only shows 100, so check it's 100 still
-            self.assertEqual(len(name_list), 100, "Mismatch number of datasets")
+        if number_of_datasets == 20: # The page only shows 100, so check it's 100 still
+            self.assertEqual(len(name_list), 20, "Mismatch number of datasets")
         else:
             self.assertEqual(len(name_list), number_of_datasets + 1, "Mismatch number of datasets")
 

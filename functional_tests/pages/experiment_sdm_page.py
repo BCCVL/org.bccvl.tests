@@ -1,5 +1,6 @@
 from base_page import BasePage
 from experiment_results_page import ExperimentResultsPage
+from selenium.webdriver.support.ui import Select
 
 
 class SDMExperimentPage(BasePage):
@@ -56,7 +57,10 @@ class SDMExperimentPage(BasePage):
         self.driver.find_element_by_id("form-widgets-species_number_pseudo_absence_points").clear()
         self.driver.find_element_by_id("form-widgets-species_number_pseudo_absence_points").send_keys(value)
 
-    def select_current_climate_layers(self, string):
+    def select_current_climate_layers(self, resolution, string):
+        # select the correct resolution filter
+        select = Select(self.driver.find_element_by_name("form.widgets.resolution:list"))
+        select.select_by_visible_text(resolution)
         # Yes, there is a type here, but that's how it is on the backend
         path_string = "(//tr[@data-friendlyname='collapbsable_climatelayer_" + string + "'])"
         self.driver.find_element_by_xpath(path_string).click()

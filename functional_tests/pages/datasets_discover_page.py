@@ -4,7 +4,7 @@ from datasets_list_page import DatasetsListPage
 
 class DatasetsDiscoverPage(DatasetsTabPage):
 
-    def enter_find_species(self,name):
+    def enter_find_species(self, name):
         self.driver.find_element_by_css_selector("div#searchOccurrence input").clear()
         self.driver.find_element_by_css_selector("div#searchOccurrence input").send_keys(name)
 

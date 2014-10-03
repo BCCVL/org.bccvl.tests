@@ -24,8 +24,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -37,10 +37,10 @@ class TestSDMExperiment(ExperimentTestCase):
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', "ann"))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_ANN.png', "ann"))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -67,8 +67,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -80,11 +80,10 @@ class TestSDMExperiment(ExperimentTestCase):
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_ANN.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))
@@ -111,8 +110,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -157,8 +156,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -203,8 +202,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -250,8 +249,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -297,8 +296,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -345,8 +344,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -393,8 +392,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -430,8 +429,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_pseudo_absences("100")
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -442,10 +441,10 @@ class TestSDMExperiment(ExperimentTestCase):
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_PA1_Full_CTA.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('cta.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -473,8 +472,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -485,10 +484,10 @@ class TestSDMExperiment(ExperimentTestCase):
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_CTA.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('cta.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -516,8 +515,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -564,8 +563,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -612,8 +611,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -658,8 +657,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -705,8 +704,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -714,6 +713,18 @@ class TestSDMExperiment(ExperimentTestCase):
         # Wait until completion
         experiment_view.wait_for_experiment_to_complete()
         self.assertTrue(experiment_view.has_completed_successfully())
+
+        self.assertTrue(experiment_view.has_results_header(experiment_name))
+        self.assertEqual(9, experiment_view.get_num_output_files())
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_FDA.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
+        self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('fda.Rout'))
+        self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
+        self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
+        self.assertTrue(experiment_view.has_result_file('pstats.json'))
 
         # Cleanup
         self.delete_experiment(experiment_name)
@@ -737,8 +748,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -749,10 +760,10 @@ class TestSDMExperiment(ExperimentTestCase):
 
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_FDA.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('fda.Rout'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
@@ -781,8 +792,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -794,11 +805,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GAM.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('gam.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -826,8 +837,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -839,11 +850,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GAM.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('gam.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -871,8 +882,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -884,11 +895,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GBM.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('gbm.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -916,8 +927,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -929,11 +940,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GBM.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('gbm.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -942,7 +953,7 @@ class TestSDMExperiment(ExperimentTestCase):
         # Cleanup
         self.delete_experiment(experiment_name)
 
-    def test_glm_1km(self):
+    def test_glm_1km_fail(self):
         homepage = Homepage(self.driver)
         login_page = homepage.click_login()
         homepage = login_page.valid_login(self.username, self.password)
@@ -961,8 +972,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -995,8 +1006,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1008,11 +1019,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GLM.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('glm.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -1040,8 +1051,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1054,11 +1065,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertEqual(11, experiment_view.get_num_output_files())
 
         self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_MAXENT.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -1087,8 +1098,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
         # Note: FDA Only works with 5km climate layer datasets
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1101,11 +1112,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertEqual(11, experiment_view.get_num_output_files())
 
         self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_MAXENT.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -1137,11 +1148,12 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B01 - Annual Mean Temperature')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
+
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
 
@@ -1152,11 +1164,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(22, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_ANN.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', "ann"))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', "ann"))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', "ann"))
@@ -1199,8 +1211,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B01 - Annual Mean Temperature')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1226,11 +1238,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'domain'))
 
         self.assertTrue(experiment_view.has_result_file('maxentResults.csv'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_MAXENT.png'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('maxent.Rout'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif'))
@@ -1262,10 +1274,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Australia, 2.5arcmin (~5km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_current_climate_layers("2.5' (~5km)", 'Current Climate 1976 to 2005, 2.5arcmin (~5km)')
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B01 - Annual Mean Temperature')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Australia, 2.5arcmin (~5km)',
+        new_sdm_page.select_environmental_datasets('Current Climate 1976 to 2005, 2.5arcmin (~5km)',
                                                    'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1277,31 +1289,31 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(27, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'ann'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_ANN.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'ann'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout', 'ann'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'ann'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'ann'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'ann'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'ann'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'ann'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'ann'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'cta'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_CTA.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'cta'))
         self.assertTrue(experiment_view.has_result_file('cta.Rout', 'cta'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'cta'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'cta'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'cta'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'cta'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'cta'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'cta'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'gam'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GAM.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'gam'))
         self.assertTrue(experiment_view.has_result_file('gam.Rout', 'gam'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'gam'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'gam'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'gam'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'gam'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'gam'))
@@ -1332,10 +1344,10 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B01 - Annual Mean Temperature')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1347,11 +1359,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(35, experiment_view.get_num_output_files())
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'ann'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_ANN.png', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'ann'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout', 'ann'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'ann'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'ann'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'ann'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'ann'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'ann'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'ann'))
@@ -1374,11 +1386,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'circles'))
 
         self.assertTrue(experiment_view.has_result_file('maxentResults.csv', 'maxent'))
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'maxent'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_MAXENT.png', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('maxent.Rout', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'maxent'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'maxent'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('maxent_outputs.zip', 'maxent'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'maxent'))
@@ -1413,12 +1425,12 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B01 - Annual Mean Temperature')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1446,31 +1458,31 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'brt'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'brt'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'cta'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_CTA.png', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'cta'))
         self.assertTrue(experiment_view.has_result_file('cta.Rout', 'cta'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'cta'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'cta'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'cta'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'cta'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'cta'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'cta'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'cta'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'fda'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'fda'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_FDA.png', 'fda'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'fda'))
         self.assertTrue(experiment_view.has_result_file('fda.Rout', 'fda'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'fda'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'fda'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'fda'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'fda'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'fda'))
         self.assertTrue(experiment_view.has_result_file('proj_current_ClampingMask.tif', 'fda'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'fda'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'gbm'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'gbm'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GBM.png', 'gbm'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'gbm'))
         self.assertTrue(experiment_view.has_result_file('gbm.Rout', 'gbm'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'gbm'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'gbm'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'gbm'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'gbm'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'gbm'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'gbm'))
@@ -1504,14 +1516,14 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
 
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B01 - Annual Mean Temperature')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B02 - Mean Diurnal Range (Mean of monthly (max temp - min temp))')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B09 - Mean Temperature of Driest Quarter')
 
         new_sdm_page.select_run()
@@ -1577,11 +1589,11 @@ class TestSDMExperiment(ExperimentTestCase):
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'convhull'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'convhull'))
 
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', 'gam'))
-        self.assertTrue(experiment_view.has_result_file('pROC.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_AllData_Full_GAM.png', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png', 'gam'))
         self.assertTrue(experiment_view.has_result_file('gam.Rout', 'gam'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv', 'gam'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv', 'gam'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv', 'gam'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip', 'gam'))
         self.assertTrue(experiment_view.has_result_file('pstats.json', 'gam'))
         self.assertTrue(experiment_view.has_result_file('proj_current_Phascolarctus.cinereus.tif', 'gam'))
@@ -1608,8 +1620,8 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_pseudo_absences("10000")
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -1621,10 +1633,10 @@ class TestSDMExperiment(ExperimentTestCase):
         # Check results
         self.assertTrue(experiment_view.has_results_header(experiment_name))
         self.assertEqual(9, experiment_view.get_num_output_files())
-        self.assertTrue(experiment_view.has_result_file('mean_response_curves.png', "ann"))
-        self.assertTrue(experiment_view.has_result_file('pROC.png'))
+        self.assertTrue(experiment_view.has_result_file('mean_response_curves_Phascolarctus.cinereus_PA1_Full_ANN.png', "ann"))
+        self.assertTrue(experiment_view.has_result_file('pROC.Full.png'))
         self.assertTrue(experiment_view.has_result_file('ann.Rout'))
-        self.assertTrue(experiment_view.has_result_file('combined.modelEvaluation.csv'))
+        self.assertTrue(experiment_view.has_result_file('combined.Full.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('biomod2.modelEvaluation.csv'))
         self.assertTrue(experiment_view.has_result_file('model.object.RData.zip'))
         self.assertTrue(experiment_view.has_result_file('pstats.json'))

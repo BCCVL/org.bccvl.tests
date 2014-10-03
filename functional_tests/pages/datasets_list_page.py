@@ -8,7 +8,7 @@ class DatasetsListPage(DatasetsTabPage):
     # NOTE: there is some danger here, as some datasets may not have visualise buttons,
     # essentially throwing out the index.
     def click_preview_dataset(self, name):
-        names = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tr td p")
+        names = self.driver.find_elements_by_css_selector("div.datasets-list-entry p.lead")
         names.reverse()
         # Figure out where it is in the list
         index = 0
@@ -38,10 +38,12 @@ class DatasetsListPage(DatasetsTabPage):
             index = index + 1
 
         # Get the share button at that index
-        controls = self.driver.find_elements_by_css_selector("i.icon-share")
-
-        # Get the index-th one.
-        controls[index].click()
+        # get the index-th list entry
+        entry = self.driver.find_elements_by_css_selector('div.datasets-list-entry')[index]
+        # open the preview pane
+        entry.find_element_by_css_selector('a.dropdown-button').click()
+        # click sharing button
+        entry.find_element_by_css_selector("a.sharing-btn").click()
 
         return SharingPage(self.driver)
 
@@ -49,7 +51,7 @@ class DatasetsListPage(DatasetsTabPage):
     # DatasetObjects which name contains the parameter 'name'
     def get_dataset_list(self):
         dataset_list = []
-        data = self.driver.find_elements_by_css_selector("table.bccvl-datasetstable tbody tr p:first-child")
+        data = self.driver.find_elements_by_css_selector("div.datasets-list-entry p.lead")
 
         for name in data:
             dataset_list.append(name.text.lower())
@@ -58,7 +60,7 @@ class DatasetsListPage(DatasetsTabPage):
     # given an css-selector, sees if the dataset at a particular index, contains that element
     # used to find spinners and controls
     def _check_dataset_element_exists(self, element_name, index):
-        row = self.driver.find_elements_by_css_selector("td.bccvl-table-controls")[index]
+        row = self.driver.find_elements_by_css_selector("div.datasets-list-entry div.dataset-list-dropdown")[index]
         results = row.find_elements_by_css_selector(element_name)
         if len(results) == 0:
             return False

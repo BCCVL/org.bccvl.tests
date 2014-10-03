@@ -22,12 +22,12 @@ class ExperimentListPage(BasePage):
         return view_experiment_page
 
     def click_new_projection_experiment(self):
-        self.driver.find_element_by_link_text("New Climate Change Experiment").click()
+        self.driver.find_element_by_css_selector("a.bccvllinks-experiment-proj-new").click()
         new_projection_experiment = ProjectionExperimentPage(self.driver)
         return new_projection_experiment
 
     def click_new_biodiverse_experiment(self):
-        self.driver.find_element_by_link_text("New Biodiverse Experiment").click()
+        self.driver.find_element_by_css_selector("a.bccvllinks-experiment-biodiverse-new").click()
         new_biodiverse_experiment = BiodiverseExperimentPage(self.driver)
         return new_biodiverse_experiment
 
@@ -36,7 +36,7 @@ class ExperimentListPage(BasePage):
         return SpeciesTraitExperimentPage(self.driver)
 
     def click_new_ensemble_experiment(self):
-        self.driver.find_element_by_link_text('New Ensemble Analysis').click()
+        self.driver.find_element_by_css_selector('a.bccvllinks-experiment-ensemble-new').click()
         return EnsembleExperimentPage(self.driver)
 
     def click_share_experiment(self, experiment_name):

@@ -27,10 +27,10 @@ class TestProjectionExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -101,10 +101,10 @@ class TestProjectionExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -181,10 +181,10 @@ class TestProjectionExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -261,10 +261,10 @@ class TestProjectionExperiment(ExperimentTestCase):
         new_sdm_page.select_absences()
         new_sdm_page.select_absences_dataset('Koala - Mini absence dataset for Redland City')
         new_sdm_page.select_environment()
-        new_sdm_page.select_current_climate_layers('Current climate layers for Redland City, 30" (~1km)')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B14 - Precipitation of Driest Month')
-        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30" (~1km)',
+        new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
                                                    'B15 - Precipitation Seasonality (Coefficient of Variation)')
         new_sdm_page.select_run()
         experiment_view = new_sdm_page.select_review_start_experiment()
@@ -326,4 +326,3 @@ class TestProjectionExperiment(ExperimentTestCase):
         # Cleanup
         self.delete_experiment(sdm_experiment_name)
         self.delete_experiment(projection_experiment_name)
-
