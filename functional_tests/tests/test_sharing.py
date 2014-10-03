@@ -1,7 +1,6 @@
 from experiment_test_base import ExperimentTestCase
 from pages.homepage import Homepage
 from test_utils import generate_timestamp
-import time
 
 
 # These tests test sharing experiments and datasets between users
@@ -96,13 +95,7 @@ class TestSharing(ExperimentTestCase):
         self.assertNotEqual(name_list[0].find("pig"), -1, "Could not find pig dataset")
 
         # Wait until the first one doesn't have a spinner anymore
-        end_time = time.time() + (5 * 60)
-        while time.time() <= end_time:
-            if not datasets_page.check_spinner(0):
-                break
-            time.sleep(5)
-        if datasets_page.check_spinner(0):
-            self.fail("Time out wating for ALA import")
+        datasets_page.wait_while_spinner(0)
 
         # Refresh the page
         datasets_page.driver.refresh()
@@ -151,13 +144,7 @@ class TestSharing(ExperimentTestCase):
         self.assertNotEqual(name_list[0].find("platypus"), -1, "Could not find platypus dataset")
 
         # Wait until the first one doesn't have a spinner anymore
-        end_time = time.time() + (5 * 60)
-        while time.time() <= end_time:
-            if not datasets_page.check_spinner(0):
-                break
-            time.sleep(5)
-        if datasets_page.check_spinner(0):
-            self.fail("Time out wating for ALA import")
+        datasets_page.wait_while_spinner(0)
 
         # Refresh the page
         datasets_page.driver.refresh()
@@ -207,13 +194,7 @@ class TestSharing(ExperimentTestCase):
         self.assertNotEqual(name_list[0].find("pig"), -1, "Could not find pig dataset")
 
         # Wait until the first one doesn't have a spinner anymore
-        end_time = time.time() + (5 * 60)
-        while time.time() <= end_time:
-            if not datasets_page.check_spinner(0):
-                break
-            time.sleep(5)
-        if datasets_page.check_spinner(0):
-            self.fail("Time out wating for ALA import")
+        datasets_page.wait_while_spinner(0)
 
         # Refresh the page
         datasets_page.driver.refresh()
@@ -245,13 +226,7 @@ class TestSharing(ExperimentTestCase):
         self.assertNotEqual(name_list[0].find("rat"), -1, "Could not find rat dataset")
 
         # Wait until the first one doesn't have a spinner anymore
-        end_time = time.time() + (5 * 60)
-        while time.time() <= end_time:
-            if not datasets_page.check_spinner(0):
-                break
-            time.sleep(5)
-        if datasets_page.check_spinner(0):
-            self.fail("Time out wating for ALA import")
+        datasets_page.wait_while_spinner(0)
 
         # Refresh the page
         datasets_page.driver.refresh()

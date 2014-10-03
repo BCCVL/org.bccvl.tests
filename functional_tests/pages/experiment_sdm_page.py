@@ -5,25 +5,25 @@ from experiment_results_page import ExperimentResultsPage
 class SDMExperimentPage(BasePage):
 
     def select_configuration(self):
-        self.driver.find_element_by_link_text("Configuration").click()
+        self.switch_tab("Configuration")
 
     def select_description(self):
-        self.driver.find_element_by_link_text("Description").click()
+        self.switch_tab("Description")
 
     def select_occurrences(self):
-        self.driver.find_element_by_link_text("Occurrences").click()
+        self.switch_tab("Occurrences")
 
     def select_absences(self):
-        self.driver.find_element_by_link_text("Absences").click()
+        self.switch_tab("Absences")
 
     def select_environment(self):
-        self.driver.find_element_by_link_text("Environment & Climate").click()
+        self.switch_tab("Climate & Environmental Data")
 
     def select_review(self):
-        self.driver.find_element_by_link_text("Review").click()
+        self.switch_tab("Review")
 
     def select_run(self):
-        self.driver.find_element_by_link_text("Run").click()
+        self.switch_tab("Run")
 
     def enter_experiment_name(self, name):
         self.driver.find_element_by_name("form.widgets.IDublinCore.title").clear()

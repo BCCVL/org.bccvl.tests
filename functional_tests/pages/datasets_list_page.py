@@ -1,5 +1,6 @@
 from datasets_tab_page import DatasetsTabPage
 from sharing_page import SharingPage
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class DatasetsListPage(DatasetsTabPage):

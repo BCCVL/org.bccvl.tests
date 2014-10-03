@@ -37,13 +37,7 @@ class TestDatasets(BCCVLTestCase):
             self.assertEqual(len(name_list), number_of_datasets + 1, "Mismatch number of datasets")
 
         # Wait until the first one doesn't have a spinner anymore
-        end_time = time.time() + (5 * 60)
-        while time.time() <= end_time:
-            if not datasets_page.check_spinner(0):
-                break
-            time.sleep(5)
-        if datasets_page.check_spinner(0):
-            self.fail("Time out wating for ALA import")
+        datasets_page.wait_while_spinner(0)
 
         # Refresh the page
         datasets_page.driver.refresh()
@@ -100,4 +94,3 @@ class TestDatasets(BCCVLTestCase):
     #
     #     self.assertTrue(visualised)
     #
-
