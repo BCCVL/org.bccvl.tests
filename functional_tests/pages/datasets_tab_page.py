@@ -29,15 +29,15 @@ class DatasetsTabPage(BasePage):
         select = Select(self.driver.find_element_by_id("upload-dataset-type"))
 
         if type == "Species Dataset":
-            select.select_by_value("species")
+            select.select_by_value("speciesoccurrence")
             from datasets_upload_species_dataset_page import DatasetsUploadSpeciesDatasetPage
             new_dataset_upload_page = DatasetsUploadSpeciesDatasetPage(self.driver)
-        elif type == "Environmental Layer":
-            select.select_by_value("environmental-layer")
+        elif type == "Future Climate Layer":
+            select.select_by_value("climatefuture")
             from datasets_upload_environmental_layer_page import DatasetsUploadEnvironmentalLayerPage
             new_dataset_upload_page = DatasetsUploadEnvironmentalLayerPage(self.driver)
         else:
-            select.select_by_value("species-trait")
+            select.select_by_value("speciestrait")
             from datasets_upload_species_trait_page import DatasetsUploadSpeciesTraitPage
             new_dataset_upload_page = DatasetsUploadSpeciesTraitPage(self.driver)
         return new_dataset_upload_page
