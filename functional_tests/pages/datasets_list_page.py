@@ -97,5 +97,5 @@ class DatasetsListPage(DatasetsTabPage):
 
     def click_homepage(self):
         self.driver.find_element_by_css_selector('a.bccvllinks-home').click()
-        from logged_in_homepage import LoggedInHomepage
+        from .logged_in_homepage import LoggedInHomepage
         return LoggedInHomepage(self.driver)
