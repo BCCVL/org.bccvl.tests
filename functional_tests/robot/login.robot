@@ -13,6 +13,7 @@ Log in out
     Should be logged out
     Log in as admin
     Should be logged in as admin
+    Logout
 
 Test Logout
     Log in as admin

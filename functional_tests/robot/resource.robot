@@ -8,14 +8,19 @@ Library        Selenium2Library
 
 *** Variables ***
 
-${SERVER}        192.168.100.200:443
+#${SERVER}        192.168.100.200:443
+${SERVER}        %{BCCVL_TEST_SERVER}
 ${BROWSER}       firefox
 ${DELAY}         0
 ${VALID USER}    demo
 ${VALID PASSWD}  mode
-${LOGIN URL}     https://${SERVER}/
+${LOGIN URL}     https://${SERVER}
+${DATASETS URL}  https://${SERVER}/datasets
 ${WELCOME URL}   https://${SERVER}/html/welcome.html
 ${ERROR URL}     https://${SERVER}/html/error.html
+${ADMIN NAME}    %{BCCVL_TEST_USERNAME}
+${ADMIN USER}    %{BCCVL_TEST_USER}
+${ADMIN PASS}    %{BCCVL_TEST_PASS}
 
 
 *** Keywords ***
@@ -33,7 +38,7 @@ Should be logged out
     Element Should Contain  css=a.bccvllinks-login   Log in
 
 Should be logged in as admin
-    Element Should Contain  css=#user-menu .bccvl-username  admin
+    Element Should Contain  css=#user-menu .bccvl-username  ${ADMIN NAME}
 
 Navigate To Login Page
     Click Element  css=a.bccvllinks-login
@@ -51,15 +56,27 @@ Navigate To Knowledgebase
 Click New SDM
     Click Link  css=a.bccvllinks-experiment-new
 
+Click New CC
+    Click Link  css=a.bccvllinks-experiment-proj-new
+
 Click Discover Dataset
     Click Link  link=Discover Dataset
+
+Click Next
+    Click Button  css=button.btn.bccvl-wizardtabs-next
+
+Click Label
+    [Arguments]    ${label}    ${index}=1
+    [Documentation]    Clicks label element which contains text ${label}.
+    ...    If there is more than one label with given text, specify index to match those labels.
+    Click Element    xpath=(//label[contains(., '${label}')])[${index}]
 
 Log in as admin
     Navigate To Login Page
     Click Element  id=login-basic
     Wait Until Element is Visible  id=__ac_name
-    Input Text  id=__ac_name  admin
-    Input Password  id=__ac_password  admin
+    Input Text  id=__ac_name  ${ADMIN USER}
+    Input Password  id=__ac_password  ${ADMIN PASS}
     Select Checkbox  id=legals-checkbox
     Click Element  css=input.btn-success
 
@@ -75,3 +92,18 @@ Logout
 #         <button type="button" class="close" data-dismiss="alert">×</button>
 #         <strong>Login failed. Both login name and password are case sensitive, check that caps lock is not enabled.</strong>
 #     </div>
+
+Wait For Ajax
+    Wait for Condition   return !!window.jQuery && window.jQuery.active == 0;
+
+Experiment State Should Be
+    [Arguments]  ${state}
+    [Documentation]  Compare overall experiment state to parameter
+    ...              Keyword succedds if state is the same otherwise fails
+    ${exp_state} =  Get Element Attribute  css=div.bccvl-expstatus@data-status
+    Should Be Equal  ${exp_state}  ${state}
+
+Wait For Experiment State
+    [Arguments]  ${state}
+    [Documentation]  Wait until experiment state matches argument
+    Wait Until Keyword Succeeds  2 min  5 sec  Experiment State Should Be  ${state}
