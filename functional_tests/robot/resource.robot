@@ -30,8 +30,8 @@ Open Browser To BCCVL Home
 #    Maximize Browser Window
     Set Window Size  ${1200}  ${800}
     Set Selenium Speed  ${DELAY}
-    Set Selenium Implicit Wait  ${15}
-    Set Selenium Timeout  ${15}
+    Set Selenium Implicit Wait  ${30}
+    Set Selenium Timeout  ${30}
     Title Should Be  BCCVL Home
 
 Should be logged out
