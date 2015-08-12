@@ -131,10 +131,11 @@ Clean Up Experiment
     [Arguments]    ${expid}
     ${listentry} =  Set Variable  id('experiment-list')//tr[.//div[@data-target='#${expid}']]
     ${delete_btn} =  Set Variable  ${listentry}//a[contains(@class,'remove-experiment-btn')]
+    ${modal_remove_form} =  Set Variable  id('remove-dataset-confirmation-form')
     Navigate To Experiments
     Click Link  xpath=${delete_btn}
-    ${remove_form} =  Set Variable  id('remove-dataset-confirmation-form')
-    Wait Until Element is Visible  xpath=${remove_form}
+    Wait Until Page Contains Element  xpath=${modal_remove_form}
+    Wait Until Element is Visible  xpath=${modal_remove_form}
     ${remove_form_btn} =  Set Variable  id('form-buttons-remove')
     Click Button  xpath=${remove_form_btn}
     Wait For Ajax
