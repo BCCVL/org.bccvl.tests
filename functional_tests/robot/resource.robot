@@ -106,4 +106,4 @@ Experiment State Should Be
 Wait For Experiment State
     [Arguments]  ${state}
     [Documentation]  Wait until experiment state matches argument
-    Wait Until Keyword Succeeds  2 min  5 sec  Experiment State Should Be  ${state}
+    Wait Until Keyword Succeeds  5 min  5 sec  Experiment State Should Be  ${state}
