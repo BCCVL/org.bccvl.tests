@@ -56,7 +56,7 @@ Test CC Base
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 14 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  6
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  5
     
     # Clean up:
     Clean Up Experiment  test-cc-base
