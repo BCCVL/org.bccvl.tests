@@ -63,12 +63,14 @@ Wait for ALA import
     ${spinner} =  Set Variable  ${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'bccvl-small-spinner')]
     # Verify url ends with datasets
     ${url}  Get Location
+    ${url} =  Fetch From Left  ${url}  \#    
     Should End With  ${url}  datasets
     # check spinner
+    Wait Until Page Contains Element  xpath=${spinner}
     Wait Until Element is Visible  xpath=${spinner}
     # Wait until import is finished (occurrences is added to title by ala import)
     Wait Until Page Contains Element  xpath=${listentry}//p[contains(., 'occurrences')]  5 min
-    # Get dataset uuid and return it (dataset-info-btn is always there even if import failed)
+    # Get dataset uuid and return it
     ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
     [Return]  ${dsuuid}
 
@@ -83,14 +85,17 @@ Wait for ALA import to fail
     ...              Keyword returns the url of the imported dataset
     # define xpath query for first dataset list entry matching given species
     ${listentry} =  Set Variable  id('datasets-listing')/div[contains(., '${species}')][1]
+    ${spinner} =  Set Variable  ${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'bccvl-small-spinner')]
     # Verify url ends with datasets
     ${url}  Get Location
+    ${url} =  Fetch From Left  ${url}  \#
     Should End With  ${url}  datasets
     # check spinner
-    Wait Until Element is Visible  xpath=${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'bccvl-small-spinner')]
+    Wait Until Page Contains Element  xpath=${spinner}
+    Wait Until Element is Visible  xpath=${spinner}
     # Wait until warning icon appears
     Wait Until Page Contains Element  xpath=${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'icon-warning-sign')]  5 min
-    # Get dataset uuid and return it (dataset-info-btn is always there even if import failed)
+    # Get dataset uuid and return it
     ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
     [Return]  ${dsuuid}
 
@@ -114,6 +119,8 @@ Clean up ALA import
     # The form is submitted via ajax
     Wait For Ajax
     # Do some checks
-    Location should be  ${DATASETS URL}
+    ${url}  Get Location
+    ${url} =  Fetch From Left  ${url}  \#    
+    Should Be Equal  ${url}  ${DATASETS URL}
     Page Should Not Contain Element  xpath=${listentry}
     
