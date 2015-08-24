@@ -63,7 +63,7 @@ Test ANN 1km
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 14 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  14
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  13
     
     # Clean up:
     Clean Up Experiment  test-ann-1km
