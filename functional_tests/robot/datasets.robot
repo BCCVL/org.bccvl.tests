@@ -112,6 +112,7 @@ Clean up ALA import
     Click Link  xpath=${details_btn}
     Wait until Element is Visible  xpath=${remove_btn}
     Click Link  xpath=${remove_btn}
+    Wait For Ajax
     # Wait until remove button in modal is on page and is visible
     Wait Until Page Contains Element  xpath=${modal_remove_btn}
     Wait Until Element is Visible  xpath=${modal_remove_btn}
