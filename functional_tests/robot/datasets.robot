@@ -45,6 +45,7 @@ Import From ALA
     Wait Until Element is Visible  css=div#searchOccurrence ul li
     # Click selected species entry in autocomplete box
     Click Link  xpath=//div[@id='searchOccurrence']//a[contains(., '(species)') and contains(., '${species}')]
+    Wait For Ajax
     # Wait for species search result
     Wait Until Element is Visible  id=searchOccurrence_results
     # Click download link in search result
@@ -60,7 +61,8 @@ Wait for ALA import
     ...              Keyword returns the url of the imported dataset
     # define xpath query for first dataset list entry matching given species
     ${listentry} =  Set Variable  id('datasets-listing')/div[contains(., '${species}')][1]
-    ${spinner} =  Set Variable  ${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'bccvl-small-spinner')]
+    ${maininfo} =  Set Variable  ${listentry}//div[contains(@class, "dataset-main-info")]    
+    ${spinner} =  Set Variable  ${maininfo}/div[contains(@class, "dataset-loading")]
     # Verify url ends with datasets
     ${url}  Get Location
     ${url} =  Fetch From Left  ${url}  \#    
@@ -69,7 +71,7 @@ Wait for ALA import
     Wait Until Page Contains Element  xpath=${spinner}
     Wait Until Element is Visible  xpath=${spinner}
     # Wait until import is finished (occurrences is added to title by ala import)
-    Wait Until Page Contains Element  xpath=${listentry}//p[contains(., 'occurrences')]  5 min
+    Wait Until Page Contains Element  xpath=${listentry}//div[contains(., 'occurrences')]  5 min
     # Get dataset uuid and return it
     ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
     [Return]  ${dsuuid}
@@ -85,7 +87,8 @@ Wait for ALA import to fail
     ...              Keyword returns the url of the imported dataset
     # define xpath query for first dataset list entry matching given species
     ${listentry} =  Set Variable  id('datasets-listing')/div[contains(., '${species}')][1]
-    ${spinner} =  Set Variable  ${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'bccvl-small-spinner')]
+    ${maininfo} =  Set Variable  ${listentry}//div[contains(@class, "dataset-main-info")]
+    ${spinner} =  Set Variable  ${maininfo}/div[contains(@class, "dataset-loading")]
     # Verify url ends with datasets
     ${url}  Get Location
     ${url} =  Fetch From Left  ${url}  \#
@@ -94,7 +97,7 @@ Wait for ALA import to fail
     Wait Until Page Contains Element  xpath=${spinner}
     Wait Until Element is Visible  xpath=${spinner}
     # Wait until warning icon appears
-    Wait Until Page Contains Element  xpath=${listentry}/div[@class="dataset-list-dropdown"]/a/i[contains(@class, 'icon-warning-sign')]  5 min
+    Wait Until Page Contains Element  xpath=${maininfo}/div[contains(@class, 'dataset-error')]  5 min
     # Get dataset uuid and return it
     ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
     [Return]  ${dsuuid}
@@ -105,12 +108,9 @@ Clean up ALA import
     [Documentation]  Removes dataset import via ALA
     ...              The dataset to remove is identified via the dataseturl parameter
     ${listentry} =  Set Variable  id('datasets-listing')/div[@data-uuid='${dsuuid}']
-    ${details_btn} =  Set Variable  ${listentry}//a[contains(@class, 'dropdown-button')]
     ${remove_btn} =  Set Variable  ${listentry}//a[contains(@class, 'remove-dataset-btn')]
     ${modal_remove_btn} =  Set Variable  id('form-buttons-remove')
     # make remove button visible
-    Click Link  xpath=${details_btn}
-    Wait until Element is Visible  xpath=${remove_btn}
     Click Link  xpath=${remove_btn}
     Wait For Ajax
     # Wait until remove button in modal is on page and is visible
