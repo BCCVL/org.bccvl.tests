@@ -22,7 +22,7 @@ Import ALA
 Import Bad ALA record
     Log in as admin
     Navigate To Datasets
-    Click Discover Dataset
+    Click Import Dataset
     ${url} =  Get Location
     ${query} =  Set Variable  ${url}?import=Import&lsid=bad%3Alsid%3Ahere&taxon=Bad%20Species
     Go To  ${query}
@@ -38,7 +38,7 @@ Import From ALA
     [Documentation]  Import dataset from ALA matching Species
     # go to import ALA page
     Navigate To Datasets
-    Click Discover Dataset
+    Click Import Dataset
     # Enter search term
     Input Text  name=searchOccurrence_query  ${search}
     # wait until ala autocompletion finishes

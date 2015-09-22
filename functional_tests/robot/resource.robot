@@ -61,8 +61,8 @@ Click New SDM
 Click New CC
     Click Link  css=a.bccvllinks-experiment-proj-new
 
-Click Discover Dataset
-    Click Link  link=Discover Dataset
+Click Import Dataset
+    Click Link  link=Import Species Dataset
 
 Click Next
     Click Button  css=button.btn.bccvl-wizardtabs-next
