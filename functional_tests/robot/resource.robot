@@ -46,7 +46,7 @@ Navigate To Login Page
 
 Navigate To Datasets
     Click Link  link=Datasets
-    Wait Until Element is Visible  link=Browse
+    Wait Until Element is Visible  link=Search Datasets
     Click Link  link=Search Datasets
 
 Navigate To Experiments
