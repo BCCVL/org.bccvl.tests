@@ -5,6 +5,8 @@ Documentation  A resource file containing the application specific keywords
 ...            implements keywords for testing HTML version of the test
 ...            application.
 Library        Selenium2Library
+Library        OperatingSystem
+Library        Process
 
 *** Keywords ***
 
@@ -105,3 +107,39 @@ Clean Up Experiment
     Location should be  ${LOGIN URL}/experiments
     Page Should Not Contain Element  xpath=${listentry}
 
+Get Result Link
+    [Arguments]    ${friendlyName}
+    [Documentation]    Return the associated link
+
+    ${link} =  Get Element Attribute  xpath=//a[@data-friendlyname=${friendlyName}]@href
+    Return From Keyword  ${link}
+
+Set Algorithm Parameter Random Seed
+    [Arguments]    ${algorithm}    ${value}
+    [Documentation]    Set the algorithm parameter to the value specified.
+
+    ${algid} =  Get Element Attribute  //a[contains(string(.), '${algorithm}')]/ancestor::div[@class='accordion-group']@data-function
+    Input Text  form.widgets.${algid}.random_seed  ${value}
+
+Verify Result
+    [Arguments]    ${link}    ${md5}
+    [Documentation]    Verify that the result has a matching md5 signature.
+
+    # Get cookie
+    ${value} =  Get Cookie Value  __ac
+    ${cookie} =  Set Variable  __ac=${value.strip('"')}
+
+    # Download the result file and return its md5 signature
+    Run Process  curl  -k  -L  -b  ${cookie}  ${link}  |  md5sum.exe  |  cut  -d  ${SPACE}  -f1  shell=true  alias=myproc
+    ${result} =  Get Process Result  myproc
+
+    #Log To Console  md5:${result.stdout}
+    Should Be Equal  ${result.stdout}  ${md5}
+
+Use Pseudo Absence Points
+    Click Link  Use Pseudo Absence Points.
+    Click Label  Pseudo absence points
+
+Use Absence Dataset
+    Select Absence Dataset
+    Page Should Contain  Koala - Mini absence dataset for Redland City
