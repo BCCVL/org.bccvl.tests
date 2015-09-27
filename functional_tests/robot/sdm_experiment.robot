@@ -25,7 +25,7 @@ Test ANN 1km with Absence Dataset
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_hist.Full.png"=7b6780465aca9884733ef042c6abed54
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_pdf.Full.png"=bb895305ba24006cea3bf554a2f041e5
 
-    Run Sdm Experiement  test-ann-1km-with-absence-dataset  Artificial Neural Network  ann  ${md5}
+    Run Sdm Experiement  test-ann-1km-with-absence-dataset  Artificial Neural Network  ann  ${md5}  12
 
 
 Test ANN 1km with Pseudo Absence Points
@@ -40,7 +40,7 @@ Test ANN 1km with Pseudo Absence Points
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_hist.Full.png"=55fbcea14a83281d8b267a4be1d12c81
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_pdf.Full.png"=ad6865b56964915dfe14aef2c6aed570
 
-    Run Sdm Experiement  test-ann-1km-with-pseudo-absence-points  Artificial Neural Network  ann  ${md5}  pseudoAbsence=True  randomSeed=12345678
+    Run Sdm Experiement  test-ann-1km-with-pseudo-absence-points  Artificial Neural Network  ann  ${md5}  12  pseudoAbsence=True  randomSeed=12345678
 
 
 Test RF 1km with Pseudo Absence Points
@@ -55,13 +55,29 @@ Test RF 1km with Pseudo Absence Points
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_hist.Full.png"=cee1e41e6614e5fb411af0693214c5fa
     Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_pdf.Full.png"=b6674327d2db4879304bc84ddf050c0e
 
-    Run Sdm Experiement  test-rf-1km-with-pseudo-absence-points  Random Forest  rf  ${md5}  pseudoAbsence=True  randomSeed=12345678
+    Run Sdm Experiement  test-rf-1km-with-pseudo-absence-points  Random Forest  rf  ${md5}  12  pseudoAbsence=True  randomSeed=12345678
+
+
+Test MAXENT 1km with Pseudo Absence Points
+    # Verify the results by checking their md5 signature
+    ${md5} =  Create Dictionary  "a_experimentoutput_mean_response_curves_Phascolarctus.cinereus_PA1_Full_MAXENT.png"=dea2debe387f4a3ab98ae5b562293135
+    Set To Dictionary  ${md5}  "a_experimentoutput_proj_current_ClampingMask.tif"=11f6a12ccb04298e3607ccb05171e929
+    Set To Dictionary  ${md5}  "a_experimentoutput_proj_current_Phascolarctus.cinereus.tif"=1f990f84920838386653cf66b114ae22
+    Set To Dictionary  ${md5}  "a_experimentoutput_pROC.Full.png"=e9cec62e25804e9834fdc137815b5722
+    Set To Dictionary  ${md5}  "a_experimentoutput_biomod2.modelEvaluation.csv"=f8b57ccac0f67b19d1480d7dfe7e5c0d
+    Set To Dictionary  ${md5}  "a_experimentoutput_combined.Full.modelEvaluation.csv"=61ed1364115d1c3f04715883b032bae9
+    Set To Dictionary  ${md5}  "a_experimentoutput_true_and_false_posivite_rates.Full.png"=da7dc615bf99ca9d62fc633b97a46817
+    Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_hist.Full.png"=09d904a20c99cfc5e4e97964fbfb0a3e
+    Set To Dictionary  ${md5}  "a_experimentoutput_occurence_absence_pdf.Full.png"=f6e820d6fd9e60a6f498d04802edfc15
+    Set To Dictionary  ${md5}  "a_experimentoutput_maxentResults.csv"=f059be9837dd3592b03172c9c5f4ace7
+    
+    Run Sdm Experiement  test-maxent-1km-with-pseudo-absence-points  Maximum Entropy Modeling  maxent  ${md5}  14  pseudoAbsence=True  randomSeed=12345678
 
 
 **** Keywords ***
 
 Run Sdm Experiement
-    [Arguments]    ${testLabel}    ${algorithmName}    ${algoShortName}    ${md5}    ${pseudoAbsence}=False    ${randomSeed}=None
+    [Arguments]    ${testLabel}    ${algorithmName}    ${algoShortName}    ${md5}    ${resultCount}    ${pseudoAbsence}=False    ${randomSeed}=None
     [Documentation]    Run a SDM experiment and verify the results to match to the specified MD5 signatures.
 
     Log in as admin
@@ -118,7 +134,7 @@ Run Sdm Experiement
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have all the result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  12
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  ${resultCount}
 
     # Verify the results by checking their md5 signature
     ${keys} =  Get Dictionary Keys  ${md5}
