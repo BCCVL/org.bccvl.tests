@@ -60,7 +60,7 @@ Test RF 1km with Pseudo Absence Points
 
 Test MAXENT 1km with Pseudo Absence Points
     # Verify the results by checking their md5 signature
-    ${md5} =  Create Dictionary  "a_experimentoutput_mean_response_curves_Phascolarctus.cinereus_PA1_Full_MAXENT.png"=dea2debe387f4a3ab98ae5b562293135
+    ${md5} =  Create Dictionary  "a_experimentoutput_mean_response_curves_Phascolarctus.cinereus_PA1_Full_MAXENT.png"=edd282d4075d3de1eb671410efa465ad
     Set To Dictionary  ${md5}  "a_experimentoutput_proj_current_ClampingMask.tif"=11f6a12ccb04298e3607ccb05171e929
     Set To Dictionary  ${md5}  "a_experimentoutput_proj_current_Phascolarctus.cinereus.tif"=1f990f84920838386653cf66b114ae22
     Set To Dictionary  ${md5}  "a_experimentoutput_pROC.Full.png"=e9cec62e25804e9834fdc137815b5722
