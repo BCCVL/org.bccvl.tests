@@ -71,9 +71,3 @@ Test ANN 1km
 
 
 **** Keywords ***
-
-Click Label
-    [Arguments]    ${label}    ${index}=1
-    [Documentation]    Clicks label element which contains text ${label}.
-    ...    If there is more than one label with given text, specify index to match those labels.
-    Click Element    xpath=(//label[contains(., '${label}')])[${index}]
