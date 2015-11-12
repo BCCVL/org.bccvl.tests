@@ -71,11 +71,15 @@ Select SDM Experiment
 Select Future Climate
     ${field} =  Set Variable  future_climate_datasets
     ${search} =  Set Variable  \#${field}-modal div.section-search
+    ${years} =  Set Variable  \#${field}-modal div.section-year-future-projection
+    ${resolution} =  Set Variable  \#${field}-modal div.section-resolution
 
     Click Link  id=${field}-popup
     Wait Until Element Is Visible  id=${field}-modal
     Input Text  css=${search} input  RCP3PD CCCMA-CGCM31
     Click Button  css=${search} button
+    Input Text  css=${years} input  2015
+    Input Text  css=${resolution} input  2.5
     Wait For Ajax
     # Select Future Datasets
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry') and contains(string(.), '(~5km) - 2015')]
