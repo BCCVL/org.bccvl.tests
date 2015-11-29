@@ -30,6 +30,7 @@ Test CC Base
     Select SDM Experiment
     Page Should Contain  Test Base SDM
     # Select model inside SDM
+    sleep  1s
     Select Checkbox  xpath=id('form-widgets-species_distribution_models')//tr[1]/td/input
 
     # Switch to next tab

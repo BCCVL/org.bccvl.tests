@@ -68,8 +68,8 @@ Wait for ALA import
     ${url} =  Fetch From Left  ${url}  \#    
     Should End With  ${url}  datasets
     # check spinner
-    Wait Until Page Contains Element  xpath=${spinner}
-    Wait Until Element is Visible  xpath=${spinner}
+    Run Keyword And Ignore Error  Wait Until Page Contains Element  xpath=${spinner}
+    Run Keyword And Ignore Error  Wait Until Element is Visible  xpath=${spinner}
     # Wait until import is finished (occurrences is added to title by ala import)
     Wait Until Page Contains Element  xpath=${listentry}//div[contains(., 'occurrences')]  5 min
     # Get dataset uuid and return it
@@ -94,8 +94,8 @@ Wait for ALA import to fail
     ${url} =  Fetch From Left  ${url}  \#
     Should End With  ${url}  datasets
     # check spinner
-    Wait Until Page Contains Element  xpath=${spinner}
-    Wait Until Element is Visible  xpath=${spinner}
+    Run Keyword And Ignore Error  Wait Until Page Contains Element  xpath=${spinner}
+    Run Keyword And Ignore Error  Wait Until Element is Visible  xpath=${spinner}
     # Wait until warning icon appears
     Wait Until Page Contains Element  xpath=${maininfo}/div[contains(@class, 'dataset-error')]  5 min
     # Get dataset uuid and return it

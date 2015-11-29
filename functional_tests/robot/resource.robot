@@ -65,7 +65,8 @@ Click Import Dataset
     Click Link  link=Import Species Data
 
 Click Next
-    Click Button  css=button.btn.bccvl-wizardtabs-next
+    sleep  1s
+    Click Button  css=button.bccvl-wizardtabs-next
 
 Click Label
     [Arguments]    ${label}    ${index}=1
@@ -75,6 +76,7 @@ Click Label
 
 Log in as admin
     Navigate To Login Page
+    sleep  1s
     Click Element  id=login-basic
     Wait Until Element is Visible  id=__ac_name
     Input Text  id=__ac_name  ${ADMIN USER}

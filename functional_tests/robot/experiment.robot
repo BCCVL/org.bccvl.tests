@@ -1,4 +1,4 @@
-*** Settings ***
+
 
 Documentation  A resource file containing the application specific keywords
 ...            that create our own domain specific language. This resource
@@ -13,9 +13,12 @@ Select Occurrence Dataset
     ${search} =  Set Variable  \#${field}-modal div.section-search
     
     Click Link  id=${field}-popup
+    sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
+    Wait For Ajax
     Input Text   css=${search} input  Redland
     Click Button  css=${search} button
+    sleep  2s
     Wait For Ajax
     # Select dataset
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
@@ -28,9 +31,13 @@ Select Absence Dataset
     ${search} =  Set Variable  \#${field}-modal div.section-search
 
     Click Link  id=${field}-popup
+    sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
+    Wait Until Page Contains Element  id=datasets-popup-result
+    Wait For Ajax
     Input Text   css=${search} input  Redland
     Click Button  css=${search} button
+    sleep  2s
     Wait For Ajax
     # Select dataset
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
@@ -43,9 +50,13 @@ Select Environmental Dataset
     ${search} =  Set Variable  \#${field}-modal div.section-search
 
     Click Link  id=${field}-popup
+    sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
+    Wait Until Element Is Visible  id=datasets-popup-result-list
+    Wait For Ajax
     Input Text   css=${search} input  Redland
     Click Button  css=${search} button
+    sleep  2s
     Wait For Ajax
     # Select dataset
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
@@ -58,9 +69,13 @@ Select SDM Experiment
     ${search} =  Set Variable  \#${field}-modal div.section-search
     
     Click Link  id=${field}-popup
+    sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
+    Wait Until Page Contains Element  id=datasets-popup-result    
+    Wait For Ajax
     Input Text  css=${search} input  Base SDM
     Click Button  css=${search} button
+    sleep  2s
     Wait For Ajax
     # Select SDM
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
@@ -75,9 +90,13 @@ Select Future Climate
     ${resolution} =  Set Variable  \#${field}-modal div.section-resolution
 
     Click Link  id=${field}-popup
+    sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
+    Wait Until Page Contains Element  id=datasets-popup-result    
+    Wait For Ajax
     Input Text  css=${search} input  RCP3PD CCCMA-CGCM31
     Click Button  css=${search} button
+    sleep  2s
     Input Text  css=${years} input  2015
     Input Text  css=${resolution} input  2.5
     Wait For Ajax
