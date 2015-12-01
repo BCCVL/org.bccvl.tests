@@ -98,7 +98,9 @@ Select Future Climate
     Click Button  css=${search} button
     sleep  2s
     Input Text  css=${years} input  2015
+    sleep  1s
     Input Text  css=${resolution} input  2.5
+    sleep  2s
     Wait For Ajax
     # Select Future Datasets
     Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry') and contains(string(.), '(~5km) - 2015')]
