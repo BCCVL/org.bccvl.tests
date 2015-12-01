@@ -19,7 +19,7 @@ virtualenv .
 
 # Run tests
 #./bin/nosetests -v --nologcapture --with-xunit
-xvfb-run --server-args="-screen 0 1280x800x8" ./bin/pybot robot
+xvfb-run -a --server-args="-screen 0 1280x800x8" ./bin/pybot robot
 
 # Return the exit status of the tests. Causes the Jenkins build to pass/fail accordingly
 exit $?
