@@ -95,11 +95,12 @@ Select Future Climate
     Wait Until Page Contains Element  id=datasets-popup-result    
     Wait For Ajax
     Input Text  css=${search} input  RCP3PD CCCMA-CGCM31
-    Click Button  css=${search} button
-    sleep  2s
     Input Text  css=${years} input  2015
     sleep  1s
+    Press Key   css=${years} input  \\13
     Input Text  css=${resolution} input  2.5
+    sleep  1s
+    Press Key   css=${resolution} input  \\13
     sleep  2s
     Wait For Ajax
     # Select Future Datasets
