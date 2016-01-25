@@ -38,6 +38,9 @@ Test ANN 1km
     Page Should Contain  Current climate layers for Redland City, 30" (~1km)
     Click Link  link=Select None
     Click Label  B14 - Precipitation of Driest Month
+
+    # skip constraints tab
+    Click Next
     
     # Switch to next tab
     Click Next
