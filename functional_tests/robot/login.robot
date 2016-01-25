@@ -34,4 +34,4 @@ Test Experiments page
 Test Knowledge page
     Log in as admin
     Navigate To Knowledgebase
-    Title Should Be  BCCVL Knowledge Base
+    Title Should Be  BCCVL Support
