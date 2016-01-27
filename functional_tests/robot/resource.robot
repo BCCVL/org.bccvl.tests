@@ -53,7 +53,7 @@ Navigate To Experiments
     Click Link  link=Experiments
 
 Navigate To Knowledgebase
-    Click Link  link=Knowledge Base
+    Click Link  link=Support
 
 Click New SDM
     Click Link  css=a.bccvllinks-experiment-new
