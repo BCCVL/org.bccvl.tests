@@ -427,7 +427,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_occurrences()
         new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
         new_sdm_page.select_absences()
-        new_sdm_page.select_pseudo_absences("100")
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
@@ -1618,7 +1617,6 @@ class TestSDMExperiment(ExperimentTestCase):
         new_sdm_page.select_occurrences()
         new_sdm_page.select_occurrences_dataset('Koala - Mini occurrence dataset for Redland City')
         new_sdm_page.select_absences()
-        new_sdm_page.select_pseudo_absences("10000")
         new_sdm_page.select_environment()
         new_sdm_page.select_current_climate_layers('30" (~1km)', 'Current climate layers for Redland City, 30&quot; (~1km)')
         new_sdm_page.select_environmental_datasets('Current climate layers for Redland City, 30&quot; (~1km)',
