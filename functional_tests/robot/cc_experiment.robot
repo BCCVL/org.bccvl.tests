@@ -1,7 +1,7 @@
 *** Settings ***
 
-Documentation  A test suite with a single test for valid login. This test has
-...            a workflow that is created using keywords from the resource file.
+Documentation  Run a simple Climate Change Experiment.
+...            This will also run an SDM as base experiment.
 Library        String
 Library        DebugLibrary
 Resource       resource.robot
@@ -118,8 +118,8 @@ Create Base SDM
     Element Should Contain  css=div.experiment-accordion-heading  Algorithm: ann
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
-    # make sure we have 14 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  12
+    # make sure we have 19 result files
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  19
     Close Browser
     
 

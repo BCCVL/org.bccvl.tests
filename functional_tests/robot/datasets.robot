@@ -24,7 +24,7 @@ Import Bad ALA record
     Navigate To Datasets
     Click Import Dataset
     ${url} =  Get Location
-    ${query} =  Set Variable  ${url}?import=Import&lsid=bad%3Alsid%3Ahere&taxon=Bad%20Species
+    ${query} =  Set Variable  ${url}?import=Import&lsid=bad%3Alsid%3Ahere&taxon=Bad%20Species&searchOccurrence_source=ala
     Go To  ${query}
     ${dsuuid} =  Wait for ALA import to fail  Bad Species
     Clean up ALA import  ${dsuuid}
