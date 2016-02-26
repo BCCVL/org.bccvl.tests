@@ -42,7 +42,7 @@ Should be logged in as admin
 
 Navigate To Login Page
     Click Element  css=a.bccvllinks-login
-    Title Should Be  BCCVL Login
+    Title Should Be  BCCVL
 
 Navigate To Datasets
     Click Link  link=Datasets
