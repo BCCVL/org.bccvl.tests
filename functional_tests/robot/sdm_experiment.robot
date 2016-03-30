@@ -28,6 +28,8 @@ Test ANN 1km
 
     # Switch to next tab
     Click Next
+    # yes we have absences
+    Select Radio Button  group_name=if_absence  value=yes    
     Select Absence Dataset
     Page Should Contain  Koala - Mini absence dataset for Redland City
     
