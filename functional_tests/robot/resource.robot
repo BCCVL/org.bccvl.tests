@@ -62,7 +62,7 @@ Click New CC
     Click Link  css=a.bccvllinks-experiment-proj-new
 
 Click Import Dataset
-    Click Link  link=Import Species Data
+    Click Link  link=Get Species Data
 
 Click Next
     sleep  1s
