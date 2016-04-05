@@ -77,11 +77,10 @@ Click Label
 Log in as admin
     Navigate To Login Page
     sleep  1s
-    Click Element  id=login-basic
     Wait Until Element is Visible  id=__ac_name
     Input Text  id=__ac_name  ${ADMIN USER}
     Input Password  id=__ac_password  ${ADMIN PASS}
-    Select Checkbox  id=legals-checkbox
+    Select Checkbox  id=legals-checkbox-site
     Click Element  css=input.btn-success
 
 
