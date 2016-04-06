@@ -58,7 +58,7 @@ Test CC Base
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 14 result files
     Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  5
-    
+
     # Clean up:
     Clean Up Experiment  test-cc-base
 
@@ -86,7 +86,7 @@ Create Base SDM
     Select Radio Button  group_name=if_absence  value=yes
     Select Absence Dataset
     Page Should Contain  Koala - Mini absence dataset for Redland City
-    
+
     # Switch to next tab
     Click Next
     Select Environmental Dataset
@@ -96,12 +96,12 @@ Create Base SDM
 
     # skip constraints tab
     Click Next
-    
+
     # Switch to next tab
     Click Next
     # select ANN
     Click Label  Artificial Neural Network
-    
+
     # Switch to next tab
     Click Next
     Click Button  xpath=//button[@name='form.buttons.save']
@@ -121,9 +121,9 @@ Create Base SDM
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  20
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  19
     Close Browser
-    
+
 
 Clean Up Base SDM
     Open Browser To BCCVL Home
