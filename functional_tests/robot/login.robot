@@ -34,4 +34,6 @@ Test Experiments page
 Test Knowledge page
     Log in as admin
     Navigate To Knowledgebase
-    Title Should Be  BCCVL Home
+    ${cur_window} =  Select Window   url=https://support.bccvl.org.au/support/home
+    Title Should Be  Support : BCCVL
+    Close Window
