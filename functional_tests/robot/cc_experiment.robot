@@ -121,7 +121,7 @@ Create Base SDM
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  19
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  18
     Close Browser
 
 
