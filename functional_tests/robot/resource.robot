@@ -72,6 +72,8 @@ Click Label
     [Arguments]    ${label}    ${index}=1
     [Documentation]    Clicks label element which contains text ${label}.
     ...    If there is more than one label with given text, specify index to match those labels.
+    Execute Javascript  window.document.evaluate("//label[contains(., '${label}')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView()
+    
     Click Element    xpath=(//label[contains(., '${label}')])[${index}]
 
 Log in as admin
