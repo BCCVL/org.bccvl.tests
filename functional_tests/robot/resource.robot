@@ -41,7 +41,7 @@ Should be logged in as admin
     Element Should Contain  css=#user-menu .bccvl-username  ${ADMIN NAME}
 
 Navigate To Login Page
-    Click Element  css=a.bccvllinks-login
+    Click Link  css=a.bccvllinks-login
     Title Should Be  BCCVL
 
 Navigate To Datasets
