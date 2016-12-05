@@ -62,7 +62,7 @@ Test CC Base
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 14 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  5
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  3
 
     # Clean up:
     [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
@@ -132,7 +132,7 @@ Create Base SDM
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  20
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  18
     Close Browser
 
 
