@@ -120,7 +120,7 @@ Create Base SDM
     @{urlparts} =  Split String From Right  ${newloc}  /  2
     ${newid} =  Set Variable  @{urlparts}[-2]
     # check id starts with pattern
-    Should Start With  ${newid}  test-ann-1km
+    Should Start With  ${newid}  test-base-sdm
     # Job submitted info message
     # 1 result on page but empty (xpath count)
     Wait For Experiment State  COMPLETED
