@@ -13,6 +13,8 @@ Test Teardown  Close Browser
 
 # Maybe just pick first (species) in list and click first download link ... fetch species name first to look up in datasets list (should be first in list)
 Test ANN 1km
+    ${newid} =  Set Variable  ${null}
+
     Log in as admin
     Navigate To Experiments
     Click New SDM
@@ -30,13 +32,14 @@ Test ANN 1km
     Click Next
     # yes we have absences
     Select Radio Button  group_name=if_absence  value=yes
+    sleep  0.5s
     Select Absence Dataset
     Page Should Contain  Koala - Mini absence dataset for Redland City
 
     # Switch to next tab
     Click Next
     Select Environmental Dataset
-    Page Should Contain  Current climate layers for Redland City, 30" (~1km)
+    Page Should Contain  Current climate layers for Redland City, 30\" (~1km)
     Click Link  link=Select None
     Click Label  B14 - Precipitation of Driest Month
 
@@ -47,7 +50,7 @@ Test ANN 1km
     Click Next
     # select ANN
     Click Label  Artificial Neural Network
-
+    
     # Switch to next tab
     Click Next
     Click Button  xpath=//button[@name='form.buttons.save']
@@ -55,7 +58,12 @@ Test ANN 1km
     Wait For Ajax
 
     # new page:
-    Location Should Be  ${LOGIN URL}/experiments/test-ann-1km/view
+    ${newloc} =  Get Location
+    # get new experiment id
+    @{urlparts} =  Split String From Right  ${newloc}  /  2
+    ${newid} =  Set Variable  @{urlparts}[-2]
+    # check id starts with pattern
+    Should Start With  ${newid}  test-ann-1km
     # Job submitted info message
     # 1 result on page but empty (xpath count)
     Wait For Experiment State  COMPLETED
@@ -67,10 +75,10 @@ Test ANN 1km
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  16
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  20
 
     # Clean up:
-    Clean Up Experiment  test-ann-1km
+    [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
 
 
 
