@@ -10,7 +10,7 @@ Library        Selenium2Library
 
 #${SERVER}        192.168.100.200:443
 ${SERVER}        %{BCCVL_TEST_SERVER}
-${BROWSER}       firefox
+${BROWSER}       Chrome
 ${DELAY}         0
 ${VALID USER}    demo
 ${VALID PASSWD}  mode
