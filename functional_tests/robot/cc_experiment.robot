@@ -45,7 +45,12 @@ Test CC Base
     Wait For Ajax
 
     # new page:
-    Location Should Be  ${LOGIN URL}/experiments/test-cc-base/view
+    ${newloc} =  Get Location
+    # get new experiment id
+    @{urlparts} =  Split String From Right  ${newloc}  /  2
+    ${newid} =  Set Variable  @{urlparts}[-2]
+    # check id starts with pattern
+    Should Start With  ${newid}  test-cc-base
     # Job submitted info message
     # 1 result on page but empty (xpath count)
     Wait For Experiment State  COMPLETED
@@ -60,7 +65,7 @@ Test CC Base
     Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  5
 
     # Clean up:
-    Clean Up Experiment  test-cc-base
+    [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
 
 
 **** Keywords ***
@@ -84,6 +89,7 @@ Create Base SDM
     Click Next
     # yes we have absences
     Select Radio Button  group_name=if_absence  value=yes
+    sleep  0.5s
     Select Absence Dataset
     Page Should Contain  Koala - Mini absence dataset for Redland City
 
@@ -109,7 +115,12 @@ Create Base SDM
     Wait For Ajax
 
     # new page:
-    Location Should Be  ${LOGIN URL}/experiments/test-base-sdm/view
+    ${newloc} =  Get Location
+    # get new experiment id
+    @{urlparts} =  Split String From Right  ${newloc}  /  2
+    ${newid} =  Set Variable  @{urlparts}[-2]
+    # check id starts with pattern
+    Should Start With  ${newid}  test-ann-1km
     # Job submitted info message
     # 1 result on page but empty (xpath count)
     Wait For Experiment State  COMPLETED
@@ -121,7 +132,7 @@ Create Base SDM
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  16
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  20
     Close Browser
 
 
