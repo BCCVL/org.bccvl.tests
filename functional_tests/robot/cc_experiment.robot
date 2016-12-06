@@ -12,6 +12,10 @@ Test Setup     Open Browser To BCCVL Home
 Test Teardown  Close Browser
 
 
+*** Variables ***
+${base_sdm_id}  ${null}
+
+
 *** Test Cases ***
 
 # Maybe just pick first (species) in list and click first download link ... fetch species name first to look up in datasets list (should be first in list)
@@ -118,9 +122,9 @@ Create Base SDM
     ${newloc} =  Get Location
     # get new experiment id
     @{urlparts} =  Split String From Right  ${newloc}  /  2
-    ${newid} =  Set Variable  @{urlparts}[-2]
+    ${base_sdm_id} =  Set Suite Variable  @{urlparts}[-2]
     # check id starts with pattern
-    Should Start With  ${newid}  test-base-sdm
+    Should Start With  ${base_sdm_id}  test-base-sdm
     # Job submitted info message
     # 1 result on page but empty (xpath count)
     Wait For Experiment State  COMPLETED
@@ -140,5 +144,5 @@ Clean Up Base SDM
     Open Browser To BCCVL Home
     Log in as admin
     Navigate To Experiments
-    Clean Up Experiment  test-base-sdm
+    Run Keyword If  '${base_sdm_id}' != '${null}'  Clean Up Experiment  ${base_sdm_id}
     Close Browser
