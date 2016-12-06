@@ -96,7 +96,7 @@ Create Base SDM
     # Switch to next tab
     Click Next
     Select Environmental Dataset
-    Page Should Contain  Current climate layers for Redland City, 30" (~1km)
+    Page Should Contain  Current climate layers for Redland City, 30\" (~1km)
     Click Link  link=Select None
     Click Label  B14 - Precipitation of Driest Month
 
@@ -132,7 +132,7 @@ Create Base SDM
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
     # make sure we have 20 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  18
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  20
     Close Browser
 
 
