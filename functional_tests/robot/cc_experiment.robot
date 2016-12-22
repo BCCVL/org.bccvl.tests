@@ -124,7 +124,7 @@ Create Base SDM
     ${newloc} =  Get Location
     # get new experiment id
     @{urlparts} =  Split String From Right  ${newloc}  /  2
-    ${base_sdm_id} =  Set Suite Variable  @{urlparts}[-2]
+    Set Suite Variable  ${base_sdm_id}  @{urlparts}[-2]
     # check id starts with pattern
     Should Start With  ${base_sdm_id}  test-base-sdm
     # Job submitted info message
