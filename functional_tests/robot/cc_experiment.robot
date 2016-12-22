@@ -21,6 +21,8 @@ ${base_sdm_id}  ${null}
 # Maybe just pick first (species) in list and click first download link ... fetch species name first to look up in datasets list (should be first in list)
 
 Test CC Base
+    ${newid} =  Set Variable  ${null}    
+
     Log in as admin
     Navigate To Experiments
     Click New CC
