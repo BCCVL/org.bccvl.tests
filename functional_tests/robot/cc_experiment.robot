@@ -67,8 +67,8 @@ Test CC Base
     Element Should Contain  css=div.experiment-accordion-heading  Year: 2015
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
-    # make sure we have 14 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  3
+    # make sure we have 4 result files
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  4
 
     # Clean up:
     [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
