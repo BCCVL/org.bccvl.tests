@@ -74,8 +74,8 @@ Test ANN 1km
     Element Should Contain  css=div.experiment-accordion-heading  Algorithm: ann
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
-    # make sure we have 21 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  21
+    # make sure we have 23 result files
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  23
 
     # Clean up:
     [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}

@@ -137,8 +137,8 @@ Create Base SDM
     Element Should Contain  css=div.experiment-accordion-heading  Algorithm: ann
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading
-    # make sure we have 21 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  21
+    # make sure we have 23 result files
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  23
     Close Browser
 
 
