@@ -97,7 +97,7 @@ Select Future Climate
     Wait Until Element Is Visible  id=${field}-modal
     Wait Until Page Contains Element  id=datasets-popup-result    
     Wait For Ajax
-    Input Text  css=${search} input  RCP3PD CCCMA-CGCM31
+    Input Text  css=${search} input  RCP2.6 CCCMA-CGCM31
     Input Text  css=${years} input  2015
     sleep  1s
     Press Key   css=${years} input  \\13
