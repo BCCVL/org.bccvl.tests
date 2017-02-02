@@ -56,7 +56,7 @@ Select Environmental Dataset
     Wait Until Element Is Visible  id=datasets-popup-result-list
     Wait For Ajax
     Unselect Checkbox  css=${summary} input
-    Mait For Ajax
+    Wait For Ajax
     Click Button  css=${search} button
     sleep  2s
     Wait For Ajax
