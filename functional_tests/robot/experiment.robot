@@ -54,7 +54,7 @@ Select Environmental Dataset
     Wait Until Element Is Visible  id=${field}-modal
     Wait Until Element Is Visible  id=datasets-popup-result-list
     Wait For Ajax
-    Input Text   css=${search} input  Redland
+    Unselect Checkbox  css=${search} input[value='Summary datasets']
     Click Button  css=${search} button
     sleep  2s
     Wait For Ajax
