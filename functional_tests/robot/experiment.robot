@@ -48,13 +48,15 @@ Select Absence Dataset
 Select Environmental Dataset
     ${field} =  Set Variable  environmental_datasets
     ${search} =  Set Variable  \#${field}-modal div.section-search
+    ${summary} =  Set Variable  \#${field}-modal div.section-summary
 
     Click Link  id=${field}-popup
     sleep  2s
     Wait Until Element Is Visible  id=${field}-modal
     Wait Until Element Is Visible  id=datasets-popup-result-list
     Wait For Ajax
-    Unselect Checkbox  css=${search} input[value='Summary datasets']
+    Unselect Checkbox  css=${summary} input
+    Mait For Ajax
     Click Button  css=${search} button
     sleep  2s
     Wait For Ajax
