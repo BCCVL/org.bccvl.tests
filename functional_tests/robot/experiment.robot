@@ -57,6 +57,7 @@ Select Environmental Dataset
     Wait For Ajax
     Unselect Checkbox  css=${summary} input
     Wait For Ajax
+    Input Text   css=${search} input  Redland
     Click Button  css=${search} button
     sleep  2s
     Wait For Ajax
