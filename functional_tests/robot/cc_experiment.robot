@@ -42,7 +42,7 @@ Test CC Base
     # Switch to next tab
     Click Next
     Select Future Climate
-    Page Should Contain  Climate Projection RCP3PD based on CCCMA-CGCM31, 2.5arcmin (~5km) - 2015
+    Page Should Contain  Climate Projection RCP2.6 based on CCCMA-CGCM31, 2.5 arcmin (~5 km) - 2015
 
     # Switch to next tab
     Click Next
