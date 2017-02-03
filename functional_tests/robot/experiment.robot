@@ -107,7 +107,7 @@ Select Future Climate
     sleep  2s
     Wait For Ajax
     # Select Future Datasets
-    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry') and contains(string(.), '(~5km) - 2015')]
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry') and contains(string(.), '(~5 km) - 2015')]
     # Click Select Experiment
     Click Button  css=\#${field}-modal button.btn-primary
     Wait For Ajax
