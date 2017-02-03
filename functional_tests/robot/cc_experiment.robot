@@ -114,7 +114,9 @@ Create Base SDM
     # select ANN
     Click Label  Artificial Neural Network
 
-    # Switch to next tab
+    # Switch to next tab (constraints)
+    Click Next
+    # Switch to next tab (Run)
     Click Next
     Click Button  xpath=//button[@name='form.buttons.save']
     # TODO: check spinner
