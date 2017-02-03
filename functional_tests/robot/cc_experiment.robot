@@ -9,7 +9,7 @@ Resource       experiment.robot
 Suite Setup    Create Base SDM
 Suite Teardown  Clean Up Base SDM
 Test Setup     Open Browser To BCCVL Home
-Test Teardown  Close Browser
+Test Teardown  Clean Up Test Case
 
 
 *** Variables ***
@@ -73,7 +73,7 @@ Test CC Base
     Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  7
 
     # Clean up:
-    [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
+    [Teardown]  Clean Up Test Case  ${newid}
 
 
 **** Keywords ***
@@ -151,4 +151,9 @@ Clean Up Base SDM
     Log in as admin
     Navigate To Experiments
     Run Keyword If  '${base_sdm_id}' != '${null}'  Clean Up Experiment  ${base_sdm_id}
+    Close Browser
+
+Clean Up Test Case
+    [Arguments]    ${newid}=${null}
+    Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
     Close Browser
