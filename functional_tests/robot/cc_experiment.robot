@@ -44,7 +44,9 @@ Test CC Base
     Select Future Climate
     Page Should Contain  Climate Projection RCP2.6 based on CCCMA-CGCM31, 2.5 arcmin (~5 km) - 2015
 
-    # Switch to next tab
+    # Switch to next tab (constraints)
+    Click Next
+    # Switch to next tab (Run)
     Click Next
     Click Button  xpath=//button[@name='form.buttons.save']
     # TODO: check spinner
