@@ -1,8 +1,0 @@
-local
-include
-man
-bin
-lib
-*.pyc
-.idea/
-.Python

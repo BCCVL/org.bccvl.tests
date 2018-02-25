@@ -2,7 +2,7 @@
 
 Documentation  Run some SDM experiments.
 Library        String
-Library        DebugLibrary
+# Library        DebugLibrary
 Resource       resource.robot
 Resource       experiment.robot
 Test Setup     Open Browser To BCCVL Home
@@ -42,6 +42,7 @@ Test ANN 1km
     Page Should Contain  Current climate layers for Redland City, 30\" (~1km)
     Click Link  link=Select None
     Click Label  B14 - Precipitation of Driest Month
+    Click Label  B13 - Precipitation of Wettest Month
 
     # skip constraints tab
     Click Next
@@ -50,7 +51,7 @@ Test ANN 1km
     Click Next
     # select ANN
     Click Label  Artificial Neural Network
-    
+
     # Switch to next tab
     Click Next
     Click Button  xpath=//button[@name='form.buttons.save']
@@ -78,8 +79,12 @@ Test ANN 1km
     Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  23
 
     # Clean up:
-    [Teardown]  Run Keyword If  '${newid}' != '${null}'  Clean Up Experiment  ${newid}
+    [Teardown]  SDM Teardown  ${newid}
 
 
 
 **** Keywords ***
+SDM Teardown
+    [Arguments]  ${expid}
+    Run Keyword If  '${expid}' != '${null}'  Clean Up Experiment  ${expid}
+    Close Browser

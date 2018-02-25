@@ -3,7 +3,7 @@
 Documentation  A test suite with a single test for valid login. This test has
 ...            a workflow that is created using keywords from the resource file.
 Library        String
-Library        DebugLibrary
+# Library        DebugLibrary
 Resource       resource.robot
 Test Setup     Open Browser To BCCVL Home
 Test Teardown  Close Browser
@@ -61,11 +61,11 @@ Wait for ALA import
     ...              Keyword returns the url of the imported dataset
     # define xpath query for first dataset list entry matching given species
     ${listentry} =  Set Variable  id('datasets-listing')/div[contains(., '${species}')][1]
-    ${maininfo} =  Set Variable  ${listentry}//div[contains(@class, "dataset-main-info")]    
+    ${maininfo} =  Set Variable  ${listentry}//div[contains(@class, "dataset-main-info")]
     ${spinner} =  Set Variable  ${maininfo}/div[contains(@class, "dataset-loading")]
     # Verify url ends with datasets
     ${url}  Get Location
-    ${url} =  Fetch From Left  ${url}  \#    
+    ${url} =  Fetch From Left  ${url}  \#
     Should End With  ${url}  datasets
     # check spinner
     Run Keyword And Ignore Error  Wait Until Page Contains Element  xpath=${spinner}
@@ -73,7 +73,7 @@ Wait for ALA import
     # Wait until import is finished (occurrences is added to title by ala import)
     Wait Until Page Contains Element  xpath=${listentry}//div[contains(., 'occurrences')]  5 min
     # Get dataset uuid and return it
-    ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
+    ${dsuuid} =  Get Element Attribute  xpath=${listentry}  attribute=data-uuid
     [Return]  ${dsuuid}
 
 
@@ -99,7 +99,7 @@ Wait for ALA import to fail
     # Wait until warning icon appears
     Wait Until Page Contains Element  xpath=${maininfo}/div[contains(@class, 'dataset-error')]  5 min
     # Get dataset uuid and return it
-    ${dsuuid} =  Get Element Attribute  xpath=${listentry}@data-uuid
+    ${dsuuid} =  Get Element Attribute  xpath=${listentry}  attribute=data-uuid
     [Return]  ${dsuuid}
 
 
@@ -121,7 +121,7 @@ Clean up ALA import
     Wait For Ajax
     # Do some checks
     ${url}  Get Location
-    ${url} =  Fetch From Left  ${url}  \#    
+    ${url} =  Fetch From Left  ${url}  \#
     Should Be Equal  ${url}  ${DATASETS URL}
     Page Should Not Contain Element  xpath=${listentry}
-    
+

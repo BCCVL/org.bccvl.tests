@@ -3,7 +3,7 @@
 Documentation  Run a simple Climate Change Experiment.
 ...            This will also run an SDM as base experiment.
 Library        String
-Library        DebugLibrary
+# Library        DebugLibrary
 Resource       resource.robot
 Resource       experiment.robot
 Suite Setup    Create Base SDM
@@ -21,7 +21,7 @@ ${base_sdm_id}  ${null}
 # Maybe just pick first (species) in list and click first download link ... fetch species name first to look up in datasets list (should be first in list)
 
 Test CC Base
-    ${newid} =  Set Variable  ${null}    
+    ${newid} =  Set Variable  ${null}
 
     Log in as admin
     Navigate To Experiments
@@ -70,7 +70,7 @@ Test CC Base
     # click accordion
     Click Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading a.expand-btn
     # make sure we have 7 result files
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  7
+    Locator Should Match X Times  css=#bccvl-experimentresults-table div div.row-fluid  9
 
     # Clean up:
     [Teardown]  Clean Up Test Case  ${newid}
@@ -107,6 +107,7 @@ Create Base SDM
     Page Should Contain  Current climate layers for Redland City, 30\" (~1km)
     Click Link  link=Select None
     Click Label  B14 - Precipitation of Driest Month
+    Click Label  B13 - Precipitation of Wettest Month
 
     # skip constraints tab
     Click Next

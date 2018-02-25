@@ -4,7 +4,7 @@ Documentation  A resource file containing the application specific keywords
 ...            that create our own domain specific language. This resource
 ...            implements keywords for testing HTML version of the test
 ...            application.
-Library        Selenium2Library
+Library        SeleniumLibrary
 
 *** Variables ***
 
@@ -73,7 +73,7 @@ Click Label
     [Documentation]    Clicks label element which contains text ${label}.
     ...    If there is more than one label with given text, specify index to match those labels.
     Execute Javascript  window.document.evaluate("//label[contains(., '${label}')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView()
-    
+
     Click Element    xpath=(//label[contains(., '${label}')])[${index}]
 
 Log in as admin
@@ -99,13 +99,14 @@ Logout
 #     </div>
 
 Wait For Ajax
+    sleep  1s
     Wait for Condition   return !!window.jQuery && window.jQuery.active == 0;
 
 Experiment State Should Be
     [Arguments]  ${state}
     [Documentation]  Compare overall experiment state to parameter
     ...              Keyword succedds if state is the same otherwise fails
-    ${exp_state} =  Get Element Attribute  css=div.bccvl-expstatus@data-status
+    ${exp_state} =  Get Element Attribute  css=div.bccvl-expstatus  attribute=data-status
     Should Be Equal  ${exp_state}  ${state}
 
 Wait For Experiment State
