@@ -3,7 +3,6 @@
 Documentation  A test suite with a single test for valid login. This test has
 ...            a workflow that is created using keywords from the resource file.
 Library        String
-# Library        DebugLibrary
 Resource       resource.robot
 Test Setup     Open Browser To BCCVL Home
 Test Teardown  Close Browser
@@ -44,6 +43,8 @@ Import From ALA
     # wait until ala autocompletion finishes
     Wait Until Element is Visible  css=div#searchOccurrence ul li
     # Click selected species entry in autocomplete box
+    # TODO: fore some reason we have to mouse over before we can click it (bug in geckodriver?)
+    Mouse Over  xpath=//div[@id='searchOccurrence']//a[contains(., '(species)') and contains(., '${species}')]
     Click Link  xpath=//div[@id='searchOccurrence']//a[contains(., '(species)') and contains(., '${species}')]
     Wait For Ajax
     # Wait for species search result
@@ -123,5 +124,6 @@ Clean up ALA import
     ${url}  Get Location
     ${url} =  Fetch From Left  ${url}  \#
     Should Be Equal  ${url}  ${DATASETS URL}
+    sleep  1s
     Page Should Not Contain Element  xpath=${listentry}
 

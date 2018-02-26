@@ -34,6 +34,6 @@ Test Experiments page
 Test Knowledge page
     Log in as admin
     Navigate To Knowledgebase
-    ${cur_window} =  Select Window   url=https://support.bccvl.org.au/support/home
+    ${cur_window} =  Wait Until Keyword Succeeds  30 sec  5 sec  Select Window   url=https://support.bccvl.org.au/support/home
     Title Should Be  Support : BCCVL
     Close Window

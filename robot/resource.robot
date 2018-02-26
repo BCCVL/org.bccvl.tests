@@ -6,11 +6,12 @@ Documentation  A resource file containing the application specific keywords
 ...            application.
 Library        SeleniumLibrary
 
+
 *** Variables ***
 
 #${SERVER}        192.168.100.200:443
 ${SERVER}        %{BCCVL_TEST_SERVER}
-${BROWSER}       Chrome
+${BROWSER}       Firefox
 ${DELAY}         0
 ${VALID USER}    demo
 ${VALID PASSWD}  mode
@@ -41,7 +42,10 @@ Should be logged in as admin
     Element Should Contain  css=#user-menu .bccvl-username  ${ADMIN NAME}
 
 Navigate To Login Page
-    Click Link  css=a.bccvllinks-login
+# TODO: work around a bug in geckodriver ... we have to click the element inside
+#       the a tag (in case it is a block element)
+#    Click Link  css=a.bccvllinks-login
+    Click Element  css=a.bccvllinks-login div
     Title Should Be  BCCVL
 
 Navigate To Datasets
@@ -62,7 +66,10 @@ Click New CC
     Click Link  css=a.bccvllinks-experiment-proj-new
 
 Click Import Dataset
-    Click Link  link=Get Species Data
+# TODO: this is another workaround a bug in geckodriver failing no locate
+#       a link by text
+#    Click Link  link=Get Species Data
+    Click Element  css=li.tab-datasetsimport a
 
 Click Next
     sleep  1s
