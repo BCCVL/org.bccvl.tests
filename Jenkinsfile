@@ -2,7 +2,7 @@
 node ('docker') {
 
     def imagename = "hub.bccvl.org.au/jenkins/firefox:latest"
-    def img
+    def img = docker.image(imagename)
     def config = "test_env_sh_{env.BRANCH_NAME}"
 
     // fetch source
@@ -14,7 +14,7 @@ node ('docker') {
     stage('Prepare') {
 
         docker.withRegistry('https://hub.bccvl.org.au', 'hub.bccvl.org.au') {
-            img = img.pull(imagename)
+            img.pull()
         }
 
     }
