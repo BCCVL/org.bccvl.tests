@@ -28,10 +28,12 @@ node ('docker') {
                 withVirtualenv('python3') {
                     sh '. ${VIRTUALENV}/bin/activate; pip install -r requirements.txt'
                     sh '. "${TEST_ENV}"; . ${VIRTUALENV}/bin/activate; xvfb-run --server-args="-screen 0 1280x800x8" pybot robot'
+                    sh 'ls -l'
                 }
             }
         }
 
+        sh 'ls -l'
         // capture robot result
         step([
              $class: 'RobotPublisher',
