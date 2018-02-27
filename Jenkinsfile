@@ -3,7 +3,7 @@ node ('docker') {
 
     def imagename = "hub.bccvl.org.au/jenkins/firefox:latest"
     def img = docker.image(imagename)
-    def config = "test_env_sh_{env.BRANCH_NAME}"
+    def config = "test_env_sh_${env.BRANCH_NAME}"
 
     // fetch source
     stage('Checkout') {
