@@ -3,6 +3,7 @@ node ('docker') {
 
     def imagename = "hub.bccvl.org.au/jenkins/firefox:latest"
     def img
+    def config = "test_env_sh_{env.BRANCH_NAME}"
 
     // fetch source
     stage('Checkout') {
@@ -20,12 +21,12 @@ node ('docker') {
 
     // publish image to registry
     stage('Test') {
-        # get env file from settings
-        withCredentials([string(credentialsId: 'pypi_index_url_prod', variable: 'PYPI_INDEX_URL')]) {
+        // get env file from settings
+        withCredentials([file(credentialsId: config, variable: 'TEST_ENV')]) {
             img.inside() {
                 withVirtualenv() {
                     sh '. ${VIRTUALENV}/bin/activate; pip install -r requirements.txt'
-                    sh '. ${VIRTUALENV}/bin/activate; xvfb-run --server-args="-screen 0 1280x800x8" pybot robot'
+                    sh '. "${TEST_ENV}"; . ${VIRTUALENV}/bin/activate; xvfb-run --server-args="-screen 0 1280x800x8" pybot robot'
                 }
             }
         }
