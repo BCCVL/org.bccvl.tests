@@ -3,7 +3,6 @@
 Documentation  Run a simple Climate Change Experiment.
 ...            This will also run an SDM as base experiment.
 Library        String
-# Library        DebugLibrary
 Resource       resource.robot
 Resource       experiment.robot
 Suite Setup    Create Base SDM
@@ -48,7 +47,7 @@ Test CC Base
     Click Next
     # Switch to next tab (Run)
     Click Next
-    Click Button  xpath=//button[@name='form.buttons.save']
+    Click Button  name=form.buttons.save
     # TODO: check spinner
     Wait For Ajax
 
@@ -77,6 +76,8 @@ Test CC Base
 
 
 **** Keywords ***
+
+# TODO: merge this somehow with sdm_experiment.robot ... they are doing the same
 
 Create Base SDM
     Open Browser To BCCVL Home
@@ -117,11 +118,9 @@ Create Base SDM
     # select ANN
     Click Label  Artificial Neural Network
 
-    # Switch to next tab (constraints)
-    Click Next
     # Switch to next tab (Run)
     Click Next
-    Click Button  xpath=//button[@name='form.buttons.save']
+    Click Button  name=form.buttons.save
     # TODO: check spinner
     Wait For Ajax
 
