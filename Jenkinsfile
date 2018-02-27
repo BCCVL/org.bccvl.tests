@@ -7,6 +7,8 @@ node ('docker') {
 
     // fetch source
     stage('Checkout') {
+        // clean git clone, but don't fail in case it doesn't exist yet
+        sh(script: 'git clean -x -d -f -f -e "eggs"', returnStatus: true)
         checkout scm
     }
 
@@ -30,17 +32,15 @@ node ('docker') {
                     def result= sh(
                         script: '. "${TEST_ENV}"; . ${VIRTUALENV}/bin/activate; xvfb-run --server-args="-screen 0 1280x800x8" pybot robot',
                         returnStatus: true)
-                    sh 'pwd'
-                    sh 'ls -l'
                 }
             }
         }
 
-        sh 'pwd'
         sh 'ls -l'
         // capture robot result
         step([
              $class: 'RobotPublisher',
+             outputPath: '',
              outputFileName: 'output.xml',
              disableArchiveOutput: false,
              reportFileName: 'report.html',
@@ -49,7 +49,6 @@ node ('docker') {
              passThreshold: 90,
              unstableThreshold: 100,
              onlyCritical: false,
-             otherFiles: '',
              enableCache: false
         ])
 
