@@ -25,7 +25,7 @@ node ('docker') {
         withCredentials([file(credentialsId: config, variable: 'TEST_ENV')]) {
             img.inside() {
                 // TODO: does this require git?
-                withVirtualenv('python3.6') {
+                withVirtualenv('python3') {
                     sh '. ${VIRTUALENV}/bin/activate; pip install -r requirements.txt'
                     sh '. "${TEST_ENV}"; . ${VIRTUALENV}/bin/activate; xvfb-run --server-args="-screen 0 1280x800x8" pybot robot'
                 }
