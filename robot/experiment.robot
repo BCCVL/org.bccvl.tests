@@ -119,6 +119,8 @@ Clean Up Experiment
     Wait Until Element is Visible  xpath=${modal_remove_btn}
     Click Button  xpath=${modal_remove_btn}
     Wait For Ajax
+    # Give browser some time to reload
+    sleep  1s
     # Do some checks
     Location should be  ${LOGIN URL}/experiments
     Page Should Not Contain Element  xpath=${listentry}

@@ -2,7 +2,6 @@
 
 Documentation  Run some SDM experiments.
 Library        String
-# Library        DebugLibrary
 Resource       resource.robot
 Resource       experiment.robot
 Test Setup     Open Browser To BCCVL Home
@@ -54,7 +53,7 @@ Test ANN 1km
 
     # Switch to next tab
     Click Next
-    Click Button  xpath=//button[@name='form.buttons.save']
+    Click Button  name=form.buttons.save
     # TODO: check spinner
     Wait For Ajax
 
