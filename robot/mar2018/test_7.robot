@@ -81,4 +81,4 @@ Test 7 - SDM shapefile
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

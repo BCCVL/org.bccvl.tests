@@ -85,5 +85,5 @@ Test 3 - SDM true absences
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+
 

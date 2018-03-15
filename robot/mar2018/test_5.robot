@@ -89,4 +89,4 @@ Test 5 - SDM predefined regions
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

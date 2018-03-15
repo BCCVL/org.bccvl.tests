@@ -83,4 +83,4 @@ Test 6 - SDM environmental env
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

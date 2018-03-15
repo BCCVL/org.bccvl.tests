@@ -108,3 +108,26 @@ Select Environmental Dataset From Modal
     # Click Save Changes
     Click Button  css=\#${field}-modal button.btn-primary
     Wait For Ajax
+
+Select Monthly Environmental Dataset From Modal
+    [Arguments]  ${subseti}  ${datasetname}  
+    ${field} =  Set Variable  datasubsets-${subseti}-items
+    ${search} =  Set Variable  \#${field}-modal div.section-search
+    ${summary} =  Set Variable  \#${field}-modal div.section-summary
+
+    Click Link  id=datasubsets-popup
+    sleep  1s
+    Wait Until Element Is Visible  id=${field}-modal
+    Wait Until Element Is Visible  id=datasets-popup-result-list
+    Wait For Ajax
+    Unselect Checkbox  css=${summary} input
+    Select Checkbox  id=c10_Monthly-datasets
+    Wait For Ajax
+    Input Text   css=${search} input  ${datasetname}
+    Click Button  css=${search} button
+    Wait For Ajax
+    # Select dataset
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
+    # Click Save Changes
+    Click Button  css=\#${field}-modal button.btn-primary
+    Wait For Ajax

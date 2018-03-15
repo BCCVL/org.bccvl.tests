@@ -152,4 +152,9 @@ Select From Selectize Multi
     \  Sleep  1s
     \  Press Key   css=${element} input  \\13
 
+
+Scroll Page To Location
+    [Arguments]    ${x_location}    ${y_location}
+    Execute JavaScript    window.scrollTo(${x_location},${y_location})
+
     

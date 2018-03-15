@@ -74,4 +74,4 @@ Test 10 - MSDM convex and buffer
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

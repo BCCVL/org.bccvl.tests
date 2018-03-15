@@ -72,4 +72,4 @@ Test 8 - MSDM
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

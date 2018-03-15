@@ -82,5 +82,5 @@ Test 1 - SDM baseline
 
     # Clean up:
     # [Teardown]  SDM Teardown  ${newid}
-    Close Browser
+
 

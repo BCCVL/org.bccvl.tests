@@ -84,5 +84,5 @@ Test 2 - SDM absence settings
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+
 

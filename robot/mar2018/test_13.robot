@@ -36,12 +36,15 @@ Test 13 - Migratory
     Click Next
 
     # Environmental Tab
-    Select Environmental Dataset From Modal  Australia, current climate 1976-2005
-    Page Should Contain  Australia, current climate (1976-2005), 30 arcsec (~1 km)
-    Click Link  css=#form-widgets-environmental_datasets a.select-none
-    Click Label  B01 - Annual Mean Temperature
-    Click Label  B14 - Precipitation of Driest Month
-    Click Label  B15 - Precipitation Seasonality (Coefficient of Variation)
+    Select Monthly Environmental Dataset From Modal  0  ANUClim (Australia), Current Climate February, (1976-2005), 30 arcsec (~1 km)
+    Page Should Contain  ANUClim (Australia), Current Climate February, (1976-2005), 30 arcsec (~1 km)
+    Input Text   id=form-widgets-datasubsets-0-title  February
+    Input Text   id=form-widgets-datasubsets-0-value  1,2,3
+    Scroll Page To Location    0    1000
+    Select Monthly Environmental Dataset From Modal  1  ANUClim (Australia), Current Climate May, (1976-2005), 30 arcsec (~1 km)
+    Page Should Contain  ANUClim (Australia), Current Climate May, (1976-2005), 30 arcsec (~1 km)
+    Input Text   id=form-widgets-datasubsets-1-title  May
+    Input Text   id=form-widgets-datasubsets-1-value  4,5,6
     Click Next
 
     # Constraints tab
@@ -52,7 +55,7 @@ Test 13 - Migratory
     Click Label  Generalized Linear Model
     Click Next
 
-    # Click Button  name=form.buttons.save
+    Click Button  name=form.buttons.save
     # Check element instead of waiting for Ajax
     Wait Until Page Contains Element  css=section.bccvl-experimentresults
 
@@ -71,4 +74,4 @@ Test 13 - Migratory
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

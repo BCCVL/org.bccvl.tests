@@ -79,4 +79,4 @@ Test 12 - MSDM shapefile
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

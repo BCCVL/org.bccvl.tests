@@ -72,4 +72,4 @@ Test 9 - MSDM true absences
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+

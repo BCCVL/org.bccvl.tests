@@ -78,4 +78,4 @@ Test 11 - MSDM predefined regions
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
-    Close Browser
+
