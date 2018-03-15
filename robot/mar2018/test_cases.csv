@@ -1,0 +1,17 @@
+Title,Experiment,Occurrences,Absences,Climate/Env data,Constraints,Algorithms,Remarks
+Test 1 - SDM baseline,SDM,Egernia occurrence test data,default settings,"Aus, 1 km, B1,4,15",default (convex hull),all,
+Test 2 - SDM absence settings,SDM,Egernia occurrence test data,Ratio 5:1,"Aus, 1 km, B1,4,15",default (convex hull),"Maxent, RF, GLM","Maxent should use 10,000 records; other algos 5x occ records"
+Test 3 - SDM true absences,SDM,Egernia occurrence test data,Egernia reduced background test data,"Aus, 1 km, B1,4,15",default (convex hull),"Maxent, RF, GLM","Maxent should use 10,000 records; other algos number of true absence data (=7500)"
+Test 4 - SDM convex + buffer,SDM,Egernia occurrence test data,default settings,"Aus, 1 km, B1,4,15",convex hull + 500 km buffer,"CTA, GLM",Pseudo-absences should be generated in area of 500 km around convex hull
+Test 5 - SDM pre-defined regions,SDM,Egernia occurrence test data,default settings,"Aus, 1 km, B1,4,15","pre-defined region: state, NSW + VIC","CTA, GLM",Pseudo-absences and constraint projection should only be in NSW and VIC
+Test 6 - SDM environmental env,SDM,Egernia occurrence test data,default settings,"Aus, 1 km, B1,4,15",environmental env,"CTA, GLM",Pseudo-absences and constraint projection should be in environmental envelope
+Test 7 - SDM shapefile,SDM,Egernia occurrence test data,default settings,"Aus, 1 km, B1,4,15",shapefile: Egernia,"CTA, GLM",Pseudo-absences and constraint projection should be in Egernia shapefile (IBRA regions)
+Test 8 - MSDM,MSDM,"Egernia, Eucalyptus, Rhinella",default settings,"Aus, 1 km, B1,4,15",default (convex hull),RF,
+Test 9 - MSDM true absences,MSDM,"Egernia, Eucalyptus, Rhinella","Ege, Euc, Rhi background data","Aus, 1 km, B1,4,15",environmental env,RF,True absences should be used
+Test 10 - MSDM convex + buffer,MSDM,"Egernia, Eucalyptus, Rhinella",default settings,"Aus, 1 km, B1,4,15",convex hull + 500 km buffer,RF,Pseudo-absences should be generated in area of 500 km around convex hull
+Test 11 - MSDM pre-defined regions,MSDM,"Egernia, Eucalyptus, Rhinella",default settings,"Aus, 1 km, B1,4,15","pre-defined region: state, NSW + VIC",GLM,Pseudo-absences and constraint projection should only be in NSW and VIC
+Test 12 - MSDM shapefile,MSDM,"Egernia, Eucalyptus, Rhinella",default settings,"Aus, 1 km, B1,4,15",shapefile: Egernia,GLM,Pseudo-absences and constraint projection should be in Egernia shapefile (IBRA regions)
+Test 13 - Migratory,MM,Monarch butterfly occurrences,default settings,"Subset 1: Feb, Subset 2: May",default (convex hull),GLM,
+,,,,,,,
+Test 14 - Climate Change,CC,SDMs from Test 1 - all algos,NA,"RCP 8.5, 2085, CSIRO-Mk3",default (convex hull),,
+Test 15 - Biodiverse,Biodiverse,MSDM from Test 8 - all species,,,,,

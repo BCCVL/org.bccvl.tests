@@ -25,7 +25,6 @@ ${ADMIN PASS}    %{BCCVL_TEST_PASS}
 
 
 *** Keywords ***
-
 Open Browser To BCCVL Home
     Open Browser  ${LOGIN_URL}  ${BROWSER}
 #    Maximize Browser Window
@@ -62,8 +61,17 @@ Navigate To Knowledgebase
 Click New SDM
     Click Link  css=a.bccvllinks-experiment-new
 
+Click New MSDM
+    Click Link  css=a.bccvllinks-experiment-msdm-new
+
+Click New MM
+    Click Link  css=a.bccvllinks-experiment-mme-new
+
 Click New CC
     Click Link  css=a.bccvllinks-experiment-proj-new
+
+Click New BD
+    Click Link  css=a.bccvllinks-experiment-biodiverse-new
 
 Click Import Dataset
 # TODO: this is another workaround a bug in geckodriver failing no locate
@@ -120,3 +128,28 @@ Wait For Experiment State
     [Arguments]  ${state}
     [Documentation]  Wait until experiment state matches argument
     Wait Until Keyword Succeeds  5 min  5 sec  Experiment State Should Be  ${state}
+
+
+Select From Selectize Single
+    [Arguments]  ${element}  ${input}
+    [Documentation]  Select item in Selectize widget
+
+    # Enter search term
+    Click Element  css=${element}
+    Input Text  css=${element} input  ${input}
+    Sleep  2s
+    Press Key   css=${element} input  \\13
+
+
+Select From Selectize Multi
+    [Arguments]  ${element}  @{inputs}
+    [Documentation]  Select item in Selectize widget
+    
+    :FOR  ${input}  IN  @{inputs}
+    # Enter search term
+    \  Click Element  css=${element}
+    \  Input Text  css=${element} input  ${input}
+    \  Sleep  1s
+    \  Press Key   css=${element} input  \\13
+
+    
