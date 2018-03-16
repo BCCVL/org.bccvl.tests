@@ -37,7 +37,7 @@ Test 7 - SDM shapefile
     Click Next
 
     # Environmental Tab
-    Select Environmental Dataset From Modal  Australia, current climate 1976-2005
+    Select Summary Environmental Dataset From Modal  Australia, current climate 1976-2005
     Page Should Contain  Australia, current climate (1976-2005), 30 arcsec (~1 km)
     Click Link  link=Select None
     Click Label  B01 - Annual Mean Temperature
@@ -77,7 +77,7 @@ Test 7 - SDM shapefile
     # confirm experiment was started successfully
     Wait For Experiment State  QUEUED
     # confirm experiment scheduled the right number of results
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div.experiment-accordion-heading  2
+    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=2
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}

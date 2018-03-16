@@ -70,7 +70,7 @@ Test 13 - Migratory
     # confirm experiment was started successfully
     Wait For Experiment State  QUEUED
     # confirm experiment scheduled the right number of results
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div.experiment-accordion-heading  2
+    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=2
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}

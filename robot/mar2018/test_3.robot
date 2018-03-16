@@ -38,7 +38,7 @@ Test 3 - SDM true absences
     Click Next
 
     # Environmental Tab
-    Select Environmental Dataset From Modal  Australia, current climate 1976-2005
+    Select Summary Environmental Dataset From Modal  Australia, current climate 1976-2005
     Page Should Contain  Australia, current climate (1976-2005), 30 arcsec (~1 km)
     Click Link  link=Select None
     Click Label  B01 - Annual Mean Temperature
@@ -72,7 +72,7 @@ Test 3 - SDM true absences
     # confirm experiment was started successfully
     Wait For Experiment State  QUEUED
     # confirm experiment scheduled the right number of results
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div.experiment-accordion-heading  3
+    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=3
 
     # How many files inside result?
     #${results_table} =  Set Variable  id('bccvl-experimentresults-table')

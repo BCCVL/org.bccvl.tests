@@ -30,7 +30,7 @@ Wait for Upload
     Run Keyword And Ignore Error  Wait Until Page Contains Element  xpath=${spinner}
     Run Keyword And Ignore Error  Wait Until Element is Visible  xpath=${spinner}
     # Wait until import is finished (export button is available after upload completes)
-    Wait Until Page Contains Element  xpath=${listentry}//a[contains(., 'Export to ALA Spatial Portal')]  30 seconds
+    Wait Until Page Contains Element  xpath=${listentry}//a[contains(., 'Export to ALA Spatial Portal')]  1 minute
     # Get dataset uuid and return it
     ${dsuuid} =  Get Element Attribute  xpath=${listentry}  attribute=data-uuid
     [Return]  ${dsuuid}

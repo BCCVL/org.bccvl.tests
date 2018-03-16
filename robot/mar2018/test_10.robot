@@ -26,9 +26,9 @@ Test 10 - MSDM convex and buffer
     Click Next
 
     # Occurrences Tab
-    Select Multi Occurrence Dataset From Modal  Egernia Eucalyptus Rhinella Occurrence
+    Select Multi Occurrence Dataset From Modal  Egernia Eucalyptus Rhinella Occurrences
     Page Should Contain  Egernia Eucalyptus Rhinella Occurrences
-    Click Link  css=a.select-all
+    Click Link  css=.select-all
     # Switch to next tab
     Click Next
 
@@ -37,7 +37,7 @@ Test 10 - MSDM convex and buffer
     Click Next
 
     # Environmental Tab
-    Select Environmental Dataset From Modal  Australia, current climate 1976-2005
+    Select Summary Environmental Dataset From Modal  Australia, current climate 1976-2005
     Page Should Contain  Australia, current climate (1976-2005), 30 arcsec (~1 km)
     Click Link  css=#form-widgets-environmental_datasets a.select-none
     Click Label  B01 - Annual Mean Temperature
@@ -55,7 +55,7 @@ Test 10 - MSDM convex and buffer
     Click Label  Random Forest
     Click Next
 
-    # Click Button  name=form.buttons.save
+    Click Button  name=form.buttons.save
     # Check element instead of waiting for Ajax
     Wait Until Page Contains Element  css=section.bccvl-experimentresults
 
@@ -70,7 +70,7 @@ Test 10 - MSDM convex and buffer
     # confirm experiment was started successfully
     Wait For Experiment State  QUEUED
     # confirm experiment scheduled the right number of results
-    Locator Should Match X Times  css=#bccvl-experimentresults-table div.experiment-accordion-heading  2
+    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=3
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}

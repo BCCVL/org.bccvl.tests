@@ -26,7 +26,7 @@ Select Occurrences From Modal
     Click Button  css=${search} button
     Wait For Ajax
     # Select dataset
-    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]//span[contains(.,'${datasetname}')]
     # Click Save Changes
     Click Button  css=\#${field}-modal button.btn-primary
     Wait For Ajax
@@ -87,7 +87,7 @@ Select Multi Absence Dataset From Modal
     Click Button  css=\#${field}-modal button.btn-primary
     Wait For Ajax
 
-Select Environmental Dataset From Modal
+Select Summary Environmental Dataset From Modal  
     [Arguments]  ${datasetname}
     ${field} =  Set Variable  environmental_datasets
     ${search} =  Set Variable  \#${field}-modal div.section-search
@@ -97,8 +97,6 @@ Select Environmental Dataset From Modal
     sleep  1s
     Wait Until Element Is Visible  id=${field}-modal
     Wait Until Element Is Visible  id=datasets-popup-result-list
-    Wait For Ajax
-    Unselect Checkbox  css=${summary} input
     Wait For Ajax
     Input Text   css=${search} input  ${datasetname}
     Click Button  css=${search} button
@@ -131,3 +129,69 @@ Select Monthly Environmental Dataset From Modal
     # Click Save Changes
     Click Button  css=\#${field}-modal button.btn-primary
     Wait For Ajax
+
+Select SDM From Modal
+    [Arguments]  ${SDMname}
+    ${field} =  Set Variable  species_distribution_models
+    ${search} =  Set Variable  \#${field}-modal div.section-search
+
+    Click Link  id=${field}-popup
+    sleep  2s
+    Wait Until Element Is Visible  id=${field}-modal
+    Wait For Ajax
+    Input Text   css=${search} input  ${SDMname}
+    Click Button  css=${search} button
+    Wait For Ajax
+    # Select dataset
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]//h4[contains(.,'${SDMname}')]
+    # Click Save Changes
+    Click Button  css=\#${field}-modal button.btn-primary
+    Wait For Ajax
+
+Select MSDM From Modal
+    [Arguments]  ${MSDMname}
+    ${field} =  Set Variable  projection
+    ${search} =  Set Variable  \#${field}-modal div.section-search
+
+    Click Link  id=${field}-popup
+    sleep  2s
+    Wait Until Element Is Visible  id=${field}-modal
+    Wait For Ajax
+    Input Text   css=${search} input  ${MSDMname}
+    Click Button  css=${search} button
+    Wait For Ajax
+    # Select dataset
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]//h4[contains(.,'${MSDMname}')]
+    # Click Save Changes
+    Click Button  css=\#${field}-modal button.btn-primary
+    Wait For Ajax
+
+Select Future Climate Dataset From Modal
+    [Arguments]  ${keywords}  ${emissionsscn}  ${year}  ${GCM}  
+    ${field} =  Set Variable  future_climate_datasets
+    ${search} =  Set Variable  \#${field}-modal div.section-search
+
+    Click Link  id=${field}-popup
+    sleep  2s
+    Wait Until Element Is Visible  id=${field}-modal
+    Wait For Ajax
+    Input Text   css=${search} input  ${keywords}
+    Click Button  css=${search} button
+    Wait For Ajax
+    Click Label  ${emissionsscn}
+    Select From Selectize Single  .section-year-future-projection .selectize-control  ${year}
+    Click Element  css=fieldset.widget-fieldset legend
+    Select From Selectize Single  .section-general-circulation-model .selectize-control  ${GCM}
+    sleep  2s
+    Execute JavaScript    jQuery('#modal-body').scrollTop(0)
+
+    # Select dataset
+    Click Element  xpath=id('${field}-modal')//div[contains(@class,'datasets-list-entry')]//h4[contains(.,'${keywords}')]
+    # Click Save Changes
+    Click Button  css=\#${field}-modal button.btn-primary
+    Wait For Ajax
+
+
+
+
+
