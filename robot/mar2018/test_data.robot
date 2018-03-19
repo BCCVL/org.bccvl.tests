@@ -20,15 +20,10 @@ Wait for Upload
     [Arguments]  ${species}
     # define xpath query for first dataset list entry matching given species
     ${listentry} =  Set Variable  id('datasets-listing')/div[contains(., '${species}')][1]
-    ${maininfo} =  Set Variable  ${listentry}//div[contains(@class, "dataset-main-info")]
-    ${spinner} =  Set Variable  ${maininfo}/div[contains(@class, "dataset-loading")]
     # Verify url ends with datasets
     ${url}  Get Location
     ${url} =  Fetch From Left  ${url}  \#
     Should End With  ${url}  datasets
-    # check spinner
-    Run Keyword And Ignore Error  Wait Until Page Contains Element  xpath=${spinner}
-    Run Keyword And Ignore Error  Wait Until Element is Visible  xpath=${spinner}
     # Wait until import is finished (export button is available after upload completes)
     Wait Until Page Contains Element  xpath=${listentry}//a[contains(., 'Export to ALA Spatial Portal')]  1 minute
     # Get dataset uuid and return it
