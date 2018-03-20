@@ -1,0 +1,12 @@
+.Python
+lib/*
+selenium/*
+bin/*
+include/*
+env_dev.sh
+geckodriver.log
+log.html
+output.xml
+pip-selfcheck.json
+report.html
+selenium-screenshot*
