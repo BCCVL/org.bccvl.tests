@@ -7,7 +7,7 @@ Resource       ../experiment.robot
 Resource       keywords.robot
 Test Setup     Open Browser To BCCVL Home
 Test Teardown  Close Browser
-Test Timeout   1 minute
+Test Timeout   2 minutes
 
 *** Test Cases ***
 
@@ -48,7 +48,9 @@ Test 12 - MSDM shapefile
     # Constraints tab
     Click Element  id=upload_shp_file
     sleep  2s
+    Scroll Page To Location  0  500
     Choose File  id=upload_file  ${CURDIR}/test-shapefile.zip
+    Click Link  id=draw-shapefile
     #TODO: make this wait conditionally to the geojson rendering
     #      maybe check the map object on page?
     Sleep  15s
