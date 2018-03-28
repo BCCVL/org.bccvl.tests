@@ -47,12 +47,15 @@ Test 11 - MSDM predefined regions
 
     # Constraints tab
     Click Element  id=region_no_offset
+    Scroll Page To Location  0  500
     Click Element  css=.selectize-control.select-region-type.single
     Select From Selectize Single  .selectize-control.select-region-type.single  Australian States and Territories
     Wait For Ajax
     @{inputs} =  Create List  Victoria  New South Wales
     Select From Selectize Multi  .selectize-control.select-region.multi  @{inputs}
-
+    Click Element  css=body
+    Sleep  2s
+    Click Element  id=selected-geojson
     Click Next
 
     # Algorithms tab

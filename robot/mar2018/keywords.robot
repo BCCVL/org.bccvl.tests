@@ -119,7 +119,7 @@ Select Monthly Environmental Dataset From Modal
     Wait Until Element Is Visible  id=datasets-popup-result-list
     Wait For Ajax
     Unselect Checkbox  css=${summary} input
-    Select Checkbox  id=c10_Monthly-datasets
+    #Select Checkbox  id=c10_Monthly-datasets
     Wait For Ajax
     Input Text   css=${search} input  ${datasetname}
     Click Button  css=${search} button
