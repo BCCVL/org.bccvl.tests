@@ -54,7 +54,7 @@ Test 11 - MSDM predefined regions
     @{inputs} =  Create List  Victoria  New South Wales
     Select From Selectize Multi  .selectize-control.select-region.multi  @{inputs}
     Click Element  css=body
-    Sleep  2s
+    Sleep  5s
     Click Element  id=selected-geojson
     Click Next
 

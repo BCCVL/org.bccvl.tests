@@ -64,7 +64,7 @@ Test 14 - Climate Change
     # confirm experiment was started successfully
     Wait For Experiment State  QUEUED
     # confirm experiment scheduled the right number of results
-    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=1
+    Page Should Contain Element  css=#bccvl-experimentresults-table div.experiment-accordion-heading  limit=11
 
     # Clean up:
     #[Teardown]  SDM Teardown  ${newid}
